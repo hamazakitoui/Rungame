@@ -15,11 +15,11 @@ namespace MagicGirl
         [Header("接地判定のレイヤー")]
         [SerializeField] LayerMask groundLayer;         // 地面チェック用のレイヤー
         [Header("ジャンプの初速度")]
-        [SerializeField] float vec0 = 0.25f;             // ジャンプの初速度
+        [SerializeField] float vec0 = 0.25f;            // ジャンプの初速度
         [Header("大ジャンプの倍率")]
         [SerializeField] float bigJump = 1.35f;         // 大ジャンプのジャンプの倍率
         [Header("走る速度")]
-        [SerializeField] float runSpeed = 0.2f;        // 走る速度
+        [SerializeField] float runSpeed = 0.2f;         // 走る速度
 
         Animator anime;             // アニメーターコンポーネント
         Rigidbody2D rigidbody;      // 物理挙動コンポーネント
@@ -31,18 +31,17 @@ namespace MagicGirl
         bool isCollision = false;   // 壁に衝突したかのフラグ
 
         int jumpCount = 0;              // ジャンプ回数
+        int speedUpTime = 0;            // 加速継続時間
         float jumpKeyTime = 0.0f;       // ジャンプボタンを押している時間
         float jumpSpeed = 0.0f;         // ジャンプの速度
         float jumpTime = 0.0f;          // ジャンプしている時間
         float gravity = 0.0f;           // 重力値
         float fallTime = 0.0f;          // 落下時間
-        float speedTime = 0.0f;         // 加速経過時間
 
         const int MAXJUMPCOUNT = 2;     // 最大ジャンプ回数
         const float GRAVITYACCELERATOR = 0.98f;     // 重力加速度
         const float BIGJUMPTIME = 0.2f; // 大ジャンプに必要な判定時間
         const float HEAD = 2.0f;        // 足元から頭までの座標距離
-        const float MAXSPEEDTIME = 3.0f;            // 加速継続時間
 
         void Start()
         {
@@ -60,9 +59,8 @@ namespace MagicGirl
                 isJump = true;
                 // ジャンプのカウントを行う
                 jumpCount++;
-                // 大ジャンプを行うなら初速度を倍率をかける
-                if (jumpKeyTime > BIGJUMPTIME) jumpSpeed = vec0 * bigJump;
-                else jumpSpeed = vec0;
+                // ジャンプに初速度を入れる
+                jumpSpeed = vec0;
             }
         }
         void FixedUpdate()
@@ -74,7 +72,7 @@ namespace MagicGirl
             // 壁に衝突判定
             IsWallCheck();
             // 衝突した場合、処理を行う
-            if (isCollision) Dead();
+            if (isCollision) { Dead(); return; }
 
             // 接地しており、ジャンプ中でなければ、ジャンプの回数をリセットする
             if (isGround && !isJump) { jumpCount = 0; }
@@ -104,11 +102,11 @@ namespace MagicGirl
             // 速度の倍率
             float mag = 1.0f;
             // 加速中なら速度を2倍にする
-            if (isSpeedUp) { mag *= 2.0f; speedTime += Time.deltaTime; }
+            if (isSpeedUp) { mag *= 2.0f; speedUpTime--; }
             // 座標に速度を入れる
             transform.position += new Vector3(runSpeed * mag, 0f, 0f);
             // 加速経過時間が最大継続時間を超えたら加速を終える
-            if(speedTime > MAXSPEEDTIME) { isSpeedUp = false; }
+            if(speedUpTime <= 0) { isSpeedUp = false; }
         }
         // ジャンプの処理
         void Jump()
@@ -195,24 +193,26 @@ namespace MagicGirl
         }
         void OnTriggerEnter2D(Collider2D collision)
         {
-            // 加速アイテムに接触したかの判定
-            if(collision.gameObject.tag == accelerateNameTag)
+            // アイテムに接触したかの判定
+            if (collision.gameObject.GetComponent<ItemData>() != null)
             {
-                // 一定時間加速する
-                isSpeedUp = true;
-                speedTime = 0.0f;
-            }
-            // 収集品に接触したかの判定
-            if (collision.gameObject.tag == coinNameTag)
-            {
-                // UIに反映する
+                // どのアイテムに接触したか識別する
+                switch (collision.gameObject.GetComponent<ItemData>().GetItemKinds)
+                {
+                    case _ItemKinds.ScoreItem:
+                        // UIに反映する
 
-            }
-            // スコアアイテムに接触したかの判定
-            if (collision.gameObject.tag == scoreNameTag)
-            {
-                // UIに反映する
+                        break;
+                    case _ItemKinds.Coin:
+                        // UIに反映する
 
+                        break;
+                    case _ItemKinds.Accelerator:
+                        // 一定時間加速する
+                        isSpeedUp = true;
+                        speedUpTime = collision.gameObject.GetComponent<ItemData>().GetValue;
+                        break;
+                }
             }
         }
     }
