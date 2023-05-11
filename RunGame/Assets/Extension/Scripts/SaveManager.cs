@@ -153,4 +153,6 @@ public struct SaveData
         if (element >= stageAchievement.Length) return false; // 要素数を超えたらFalseを必ず返す
         return stageAchievement[element];
     }
+    /// <summary> ステージ数 </summary>
+    public int StageLength { get { return stageClear.Length; } }
 }
