@@ -45,6 +45,8 @@ namespace MagicGirl
         const float BIGJUMPTIME = 0.2f; // 大ジャンプに必要な判定時間
         const float HEAD = 2.0f;        // 足元から頭までの座標距離
 
+        public bool isMove { set; get; }    // 行動可能かのフラグ
+
         void Start()
         {
             // コンポーネントを取得
@@ -54,6 +56,9 @@ namespace MagicGirl
         }
         void Update()
         {
+            // 行動禁止の場合、処理しない
+            if (!isMove) return;
+
             // スペースキーを押したらジャンプを行うフラグを建てる
             if (Input.GetKeyDown(KeyCode.Space) && jumpCount < MAXJUMPCOUNT)
             {
@@ -67,6 +72,9 @@ namespace MagicGirl
         }
         void FixedUpdate()
         {
+            // 行動禁止の場合、処理しない
+            if (!isMove) return;
+
             // 接地しているかの判定を行う
             GroundCheck();
             // 頭上の判定
