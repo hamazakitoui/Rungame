@@ -207,7 +207,7 @@ namespace MagicGirl
                         break;
                     case _ItemKinds.Collectibles:
                         // UI‚É”½‰f‚·‚é
-                        
+                        collectiblesUI.SetCollectibles(collision.gameObject.GetComponent<ItemData>().GetValue);
                         break;
                     case _ItemKinds.Accelerator:
                         // ˆê’èŽžŠÔ‰Á‘¬‚·‚é
