@@ -1,7 +1,7 @@
 public enum _ItemKinds
 {
     ScoreItem,
-    Coin,
+    Collectibles,
     Accelerator,
     
 
