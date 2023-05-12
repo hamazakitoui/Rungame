@@ -53,6 +53,7 @@ namespace MagicGirl
             anime = GetComponent<Animator>();
             rigidbody = GetComponent<Rigidbody2D>();
 
+            isMove = true;
         }
         void Update()
         {
