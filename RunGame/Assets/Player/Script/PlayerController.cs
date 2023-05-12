@@ -9,7 +9,7 @@ namespace MagicGirl
         [Header("加速アイテムのタグの名前")]
         [SerializeField] string accelerateNameTag;      // 加速アイテムのタグ
         [Header("収集物のタグの名前")]
-        [SerializeField] string coinNameTag;            // エキストラアイテムのタグ
+        [SerializeField] string coinNameTag;            // 収集物アイテムのタグ
         [Header("スコアアイテムのタグの名前")]
         [SerializeField] string scoreNameTag;           // スコアアイテムのタグ
         [Header("接地判定のレイヤー")]
@@ -21,6 +21,8 @@ namespace MagicGirl
         [Header("走る速度")]
         [SerializeField] float runSpeed = 0.2f;         // 走る速度
 
+        [SerializeField] ScoreManager scoreManager;     // スコア表示管理
+        [SerializeField] CollectiblesUI collectiblesUI; // 収集物入手管理
         Animator anime;             // アニメーターコンポーネント
         Rigidbody2D rigidbody;      // 物理挙動コンポーネント
 
@@ -201,11 +203,11 @@ namespace MagicGirl
                 {
                     case _ItemKinds.ScoreItem:
                         // UIに反映する
-
+                        scoreManager.SetScore(collision.gameObject.GetComponent<ItemData>().GetValue);
                         break;
-                    case _ItemKinds.Coin:
+                    case _ItemKinds.Collectibles:
                         // UIに反映する
-
+                        
                         break;
                     case _ItemKinds.Accelerator:
                         // 一定時間加速する
