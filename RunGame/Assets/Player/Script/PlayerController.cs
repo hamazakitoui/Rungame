@@ -45,7 +45,9 @@ namespace MagicGirl
         const float BIGJUMPTIME = 0.2f; // 大ジャンプに必要な判定時間
         const float HEAD = 2.0f;        // 足元から頭までの座標距離
 
-        public bool isMove { set; get; }    // 行動可能かのフラグ
+        public bool isMove { get; set; }    // 行動可能かのフラグ
+        public bool isDead { get; set; }    // 死亡したかのフラグ
+        public bool isStageClear { get; set; }   // クリアしたかのフラグ
 
         void Start()
         {
