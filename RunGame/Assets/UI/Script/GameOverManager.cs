@@ -23,7 +23,12 @@ public class GameOverManager : MonoBehaviour
         {
             switch (number)
             {
+                case (int)ProcessNumber.RETRY:
 
+                    break;
+                case (int)ProcessNumber.EXIT:
+
+                    break;
             }
         }
     }

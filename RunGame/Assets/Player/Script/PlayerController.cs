@@ -35,7 +35,6 @@ public class PlayerController : MonoBehaviour
 
     int jumpCount = 0;              // ジャンプ回数
     int speedUpTime = 0;            // 加速継続時間
-    float jumpKeyTime = 0.0f;       // ジャンプボタンを押している時間
     float jumpSpeed = 0.0f;         // ジャンプの速度
     float jumpTime = 0.0f;          // ジャンプしている時間
     float gravity = 0.0f;           // 重力値
@@ -43,7 +42,6 @@ public class PlayerController : MonoBehaviour
 
     const int MAXJUMPCOUNT = 2;     // 最大ジャンプ回数
     const float GRAVITYACCELERATOR = 0.98f;     // 重力加速度
-    const float BIGJUMPTIME = 0.2f; // 大ジャンプに必要な判定時間
     const float HEAD = 2.0f;        // 足元から頭までの座標距離
 
     public bool isMove { get; set; }    // 行動可能かのフラグ
@@ -109,6 +107,9 @@ public class PlayerController : MonoBehaviour
         //    gravity = 0.0f;
         //    fallTime = 0.0f;
         //}
+
+        // 自身の現在のY座標が死亡ラインの座標以下ならば死亡処理を行う
+        if (transform.position.y < deadLine_y) { Dead(); }
     }
     // 前に走る処理
     void Run()
@@ -148,9 +149,6 @@ public class PlayerController : MonoBehaviour
             // 反映させる
             transform.position += new Vector3(0, jumpSpeed, 0);
         }
-
-        // 自身の現在のY座標が死亡ラインの座標以下ならば死亡処理を行う
-        if(transform.position.y < deadLine_y){ Dead(); }
     }
     // 死亡処理
     void Dead()
