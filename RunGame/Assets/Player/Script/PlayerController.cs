@@ -18,7 +18,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float bigJump = 1.35f;         // 大ジャンプのジャンプの倍率
     [Header("走る速度")]
     [SerializeField] float runSpeed = 0.2f;         // 走る速度
+    [Header("落下死亡判定座標")]
+    [SerializeField] float deadLine_y = -5f;        // 落下死亡判定の座標
 
+    [SerializeField] GameOverManager gameOverManager;// ゲームオーバーUI管理
     [SerializeField] ScoreManager scoreManager;     // スコア表示管理
     [SerializeField] CollectiblesUI collectiblesUI; // 収集物入手管理
     Animator anime;             // アニメーターコンポーネント
@@ -145,20 +148,22 @@ public class PlayerController : MonoBehaviour
             // 反映させる
             transform.position += new Vector3(0, jumpSpeed, 0);
         }
+
+        // 自身の現在のY座標が死亡ラインの座標以下ならば死亡処理を行う
+        if(transform.position.y < deadLine_y){ Dead(); }
     }
     // 死亡処理
     void Dead()
     {
         // 死亡アニメーションを再生する
-        anime.SetBool("isDead", false);
+        anime.SetBool("isDead", true);
 
         // 重力を0にする
         rigidbody.gravityScale = 0;
         rigidbody.velocity = Vector3.zero;
 
-        // ゲームオーバー処理
-
-
+        // ゲームオーバーのUIの処理を開始する
+        gameOverManager.GameOver();
     }
     // 重力の計算
     void Gravity()
