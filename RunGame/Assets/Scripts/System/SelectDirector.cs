@@ -11,6 +11,7 @@ public class SelectDirector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SaveManager.Instance.Load(); // セーブデータ読み込み
         SaveData data = SaveManager.Instance.GetData; // ステージデータ
         // 選択できるシーンを初期化
         for(int s = 0; s < scenes.Length; s++)
