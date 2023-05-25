@@ -78939,7 +78939,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6349244217328058225, guid: 3d2a9f92d75d1f046949d69540bd7b54, type: 3}
       propertyPath: routeVec.Array.size
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6349244217328058225, guid: 3d2a9f92d75d1f046949d69540bd7b54, type: 3}
       propertyPath: routeVec.Array.data[0].x
@@ -78975,7 +78975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6349244217328058225, guid: 3d2a9f92d75d1f046949d69540bd7b54, type: 3}
       propertyPath: routeVec.Array.data[4].x
-      value: 267.93
+      value: 285.93
       objectReference: {fileID: 0}
     - target: {fileID: 6349244217328058225, guid: 3d2a9f92d75d1f046949d69540bd7b54, type: 3}
       propertyPath: routeVec.Array.data[4].y
@@ -78983,11 +78983,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6349244217328058225, guid: 3d2a9f92d75d1f046949d69540bd7b54, type: 3}
       propertyPath: routeVec.Array.data[5].x
-      value: 390
+      value: 328
       objectReference: {fileID: 0}
     - target: {fileID: 6349244217328058225, guid: 3d2a9f92d75d1f046949d69540bd7b54, type: 3}
       propertyPath: routeVec.Array.data[5].y
-      value: 3
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6349244217328058225, guid: 3d2a9f92d75d1f046949d69540bd7b54, type: 3}
+      propertyPath: routeVec.Array.data[6].x
+      value: 358
+      objectReference: {fileID: 0}
+    - target: {fileID: 6349244217328058225, guid: 3d2a9f92d75d1f046949d69540bd7b54, type: 3}
+      propertyPath: routeVec.Array.data[6].y
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6349244217328058225, guid: 3d2a9f92d75d1f046949d69540bd7b54, type: 3}
+      propertyPath: routeVec.Array.data[7].x
+      value: 390
+      objectReference: {fileID: 0}
+    - target: {fileID: 6349244217328058225, guid: 3d2a9f92d75d1f046949d69540bd7b54, type: 3}
+      propertyPath: routeVec.Array.data[7].y
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6349244217328058226, guid: 3d2a9f92d75d1f046949d69540bd7b54, type: 3}
       propertyPath: m_RootOrder
