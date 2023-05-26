@@ -5,10 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class GameOverManager : MonoBehaviour
 {
-    [SerializeField] GameObject SelectImage;        // 選択アイコン
+    [SerializeField] RectTransform SelectImage;        // 選択アイコン
 
     int number = 0;             // 処理番号
     bool isControl = false;     // 処理を行うかのフラグ
+
+    const int MAXNUMBER = 1;    // 最大処理番号
+    const float RETRY_Y = 9.0f;  // リトライのｙ座標
+    const float EXIT_Y = -69.0f; // ステージを出る選択のｙ座標
 
     enum ProcessNumber
     {
@@ -48,13 +52,34 @@ public class GameOverManager : MonoBehaviour
             // 処理番号を減算する0未満になった場合、0に直す
             number--;
             if (number < 0) number = 0;
-
+            // 選択アイコンを移動させる
+            SelectImageMove();
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             // 処理番号を加算する最大選択肢値を超えたら最大値に戻す
             number++;
-            
+            if (number > MAXNUMBER) number = MAXNUMBER;
+            // 選択アイコンを移動させる
+            SelectImageMove();
+        }
+    }
+
+    void SelectImageMove()
+    {
+        // 現在の処理番号の位置に移動させる
+        switch (number)
+        {
+            case (int)ProcessNumber.RETRY:
+                SelectImage.localPosition = new Vector3(SelectImage.localPosition.x, RETRY_Y, 0.0f);
+                break;
+            case (int)ProcessNumber.EXIT:
+                SelectImage.localPosition = new Vector3(SelectImage.localPosition.x, EXIT_Y, 0.0f);
+                break;
+            // 当てはまらない数値が検出された場合、エラー文を出す
+            default:
+                Debug.LogError("当てはまらない数値が検出されました！");
+                break;
         }
     }
 
