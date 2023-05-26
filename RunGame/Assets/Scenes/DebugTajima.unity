@@ -368,6 +368,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1b9cbe897d61224faaff2122d21de09, type: 3}
+--- !u!224 &1457576939 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5673033225987479833, guid: 915d591ec08346c4184546ddbbea3d40, type: 3}
+  m_PrefabInstance: {fileID: 1400252660570616550}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1529248768
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,6 +719,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7393946459446622363, guid: 915d591ec08346c4184546ddbbea3d40, type: 3}
+      propertyPath: SelectImage
+      value: 
+      objectReference: {fileID: 1457576939}
     - target: {fileID: 7836437448938567031, guid: 915d591ec08346c4184546ddbbea3d40, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -33

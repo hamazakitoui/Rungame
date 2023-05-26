@@ -228,5 +228,12 @@ public class PlayerController : MonoBehaviour
                     break;
             }
         }
+
+        // “G‚ÆÚG‚µ‚½‚©‚Ì”»’è
+        if(collision.gameObject.GetComponent<IEnemy>() != null)
+        {
+            // ÚG‚µ‚Ä‚¢‚é‚È‚ç‚Î€–Sˆ—‚ÉˆÚ‚é
+            Dead();
+        }
     }
 }
