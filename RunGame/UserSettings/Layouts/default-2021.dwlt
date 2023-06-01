@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 780.8
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Inspector
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 21
+  controlID: 95
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 105
+  controlID: 100
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -313,8 +313,8 @@ MonoBehaviour:
   m_MipLevel: 0
   m_Zoom: 0.23245715
   m_ScrollPosition: {x: 0, y: 0}
-  m_SelectedObject: {fileID: 102900000, guid: e83632499c9a2654e80fff307b4ef1d9, type: 3}
-  m_SelectedSpriteRectGUID: 2008718846d577448ad8c7a494a131e3
+  m_SelectedObject: {fileID: 0}
+  m_SelectedSpriteRectGUID: 00000000000000000000000000000000
   m_LastUsedModuleTypeName: 
 --- !u!114 &13
 MonoBehaviour:
@@ -657,7 +657,7 @@ MonoBehaviour:
   m_Position:
     m_Target: {x: -7.4007316, y: -0.64143854, z: 0.493136}
     speed: 2
-    m_Value: {x: -7.990106, y: -0.3309821, z: 0.48726195}
+    m_Value: {x: -7.4007316, y: -0.64143854, z: 0.493136}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -710,7 +710,7 @@ MonoBehaviour:
   m_Size:
     m_Target: 12.465995
     speed: 2
-    m_Value: 13.053398
+    m_Value: 12.465995
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -857,9 +857,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: fcebffff3af5ffffb2f5ffff0ef7ffffbc6c0000
+      m_SelectedIDs: ecb10000
+      m_LastClickedID: 45548
+      m_ExpandedIDs: bcbeffff2ec0ffff6ac1ffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -931,14 +931,14 @@ MonoBehaviour:
   m_StartGridSize: 64
   m_LastFolders: []
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\user\Documents\Rungame\RunGame
+  m_LastProjectPath: C:\Users\user\Documents\RunGame0\RunGame
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: f68e0000
     m_LastClickedID: 36598
-    m_ExpandedIDs: 00000000f46a0000f66a0000f86a0000fa6a0000fc6a0000fe6a0000
+    m_ExpandedIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -966,7 +966,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000f46a0000f66a0000f86a0000fa6a0000
+    m_ExpandedIDs: ffffffff0e9d00004a9d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
