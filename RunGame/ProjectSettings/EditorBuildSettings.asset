@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SelectScene.unity
     guid: eb6f1608a4c2f8e40910cc2e8971cc34
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: 422d75649c382b047ac057c24fe2a17d
   m_configObjects: {}
