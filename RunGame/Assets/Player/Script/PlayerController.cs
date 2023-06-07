@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     bool isSpeedUp = false;     // 加速するフラグ
     bool isOverHead = false;    // 頭上に天井があるかのフラグ
     bool isCollision = false;   // 壁に衝突したかのフラグ
+    bool isJumpRamp = false;    // ジャンプ台を踏んだかのフラグ
 
     int jumpCount = 0;              // ジャンプ回数
     int speedUpTime = 0;            // 加速継続時間
@@ -52,7 +53,7 @@ public class PlayerController : MonoBehaviour
         if (!isMove) return;
 
         // スペースキーを押したらジャンプを行うフラグを建てる
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < MAXJUMPCOUNT)
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < MAXJUMPCOUNT && !isJump)
         {
             // ジャンプのフラグを入れる
             isJump = true;
@@ -94,6 +95,8 @@ public class PlayerController : MonoBehaviour
     {
         // 速度の倍率
         float mag = 1.0f;
+        // ジャンプ台によるジャンプ中なら速度を半分にする
+        if (isJumpRamp) { mag /= 2.0f; }
         // 加速中なら速度を2倍にする
         if (isSpeedUp) { mag *= 2.0f; speedUpTime--; }
         // 座標に速度を入れる
@@ -120,6 +123,7 @@ public class PlayerController : MonoBehaviour
         if (jumpSpeed <= 0.0f || isOverHead)
         {
             isJump = false;
+            isJumpRamp = false;
             anime.SetBool("isJump", false);
         }
         else
@@ -183,16 +187,22 @@ public class PlayerController : MonoBehaviour
             {
                 case _ItemKinds.ScoreItem:
                     // UIに反映する
-                    scoreManager.SetScore(collision.gameObject.GetComponent<ItemData>().GetValue);
+                    scoreManager.SetScore((int)collision.gameObject.GetComponent<ItemData>().GetValue);
                     break;
                 case _ItemKinds.Collectibles:
                     // UIに反映する
-                    collectiblesUI.SetCollectibles(collision.gameObject.GetComponent<ItemData>().GetValue);
+                    collectiblesUI.SetCollectibles((int)collision.gameObject.GetComponent<ItemData>().GetValue);
                     break;
                 case _ItemKinds.Accelerator:
                     // 一定時間加速する
                     isSpeedUp = true;
-                    speedUpTime = collision.gameObject.GetComponent<ItemData>().GetValue;
+                    speedUpTime = (int)collision.gameObject.GetComponent<ItemData>().GetValue;
+                    break;
+                case _ItemKinds.JumpRamp:
+                    // 即時ジャンプする
+                    jumpSpeed = collision.gameObject.GetComponent<ItemData>().GetValue;
+                    isJumpRamp = true;
+                    isJump = true;
                     break;
             }
         }
