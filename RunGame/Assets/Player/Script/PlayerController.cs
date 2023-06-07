@@ -18,12 +18,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] CollectiblesUI collectiblesUI; // 収集物入手管理
     Animator anime;             // アニメーターコンポーネント
     Rigidbody2D rigidbody;      // 物理挙動コンポーネント
-    Light light;                // 自身のライト
 
     bool isJump = false;        // ジャンプフラグ
     bool isGround = false;      // 接地フラグ
     bool isSpeedUp = false;     // 加速するフラグ
-    bool isLightUp = false;     // 光の拡大化フラグ
     bool isOverHead = false;    // 頭上に天井があるかのフラグ
     bool isCollision = false;   // 壁に衝突したかのフラグ
 
@@ -31,9 +29,6 @@ public class PlayerController : MonoBehaviour
     int speedUpTime = 0;            // 加速継続時間
     float jumpSpeed = 0.0f;         // ジャンプの速度
     float jumpTime = 0.0f;          // ジャンプしている時間
-    float defaultLightSize = 0.0f;  // デフォルトのライトの大きさ
-    float lightSpeed = 0.1f;        // ライトのサイズ変更速度
-    float lightUpTime = 0.0f;       // ライトの拡大時間
 
     const int MAXJUMPCOUNT = 2;     // 最大ジャンプ回数
     const float GRAVITYACCELERATOR = 0.98f;     // 重力加速度
@@ -48,7 +43,6 @@ public class PlayerController : MonoBehaviour
         // コンポーネントを取得
         anime = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();
-        light = transform.GetChild(0).gameObject.GetComponent<Light>();
 
         isMove = true;
     }
@@ -94,9 +88,6 @@ public class PlayerController : MonoBehaviour
         // 自身の現在のY座標が死亡ラインの座標以下ならば死亡処理を行う
         if (transform.position.y < deadLine_y) { Dead(); }
 
-        // ライトのサイズを大きくする
-        if (isLightUp) { LightSizeUP(); }
-        
     }
     // 前に走る処理
     void Run()
@@ -136,25 +127,6 @@ public class PlayerController : MonoBehaviour
             // 反映させる
             transform.position += new Vector3(0, jumpSpeed, 0);
         }
-    }
-    // ライトのサイズ変更処理
-    void LightSizeUP()
-    {
-        int i = 0;
-        while (true)
-        {
-            i++;
-
-            
-            if(i > 50)
-            {
-                break;
-            }
-        }
-    }
-    void LightSizeDown()
-    {
-
     }
     // 死亡処理
     void Dead()
@@ -221,11 +193,6 @@ public class PlayerController : MonoBehaviour
                     // 一定時間加速する
                     isSpeedUp = true;
                     speedUpTime = collision.gameObject.GetComponent<ItemData>().GetValue;
-                    break;
-                case _ItemKinds.LightItem:
-                    // 一定時間明るくなる
-                    isLightUp = true;
-                    lightUpTime = collision.gameObject.GetComponent<ItemData>().GetValue;
                     break;
             }
         }
