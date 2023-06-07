@@ -7,9 +7,9 @@ public class ItemData : MonoBehaviour
     [Header("アイテムの種類")]
     [SerializeField] _ItemKinds itemKinds;
     [Header("アイテムの値")]
-    [SerializeField] int value;
+    [SerializeField] float value;
 
     public _ItemKinds GetItemKinds { get { return itemKinds; } }
 
-    public int GetValue { get { return value; } }
+    public float GetValue { get { return value; } }
 }
