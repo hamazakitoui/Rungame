@@ -4,18 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("加速アイテムのタグの名前")]
-    [SerializeField] string accelerateNameTag;      // 加速アイテムのタグ
-    [Header("収集物のタグの名前")]
-    [SerializeField] string coinNameTag;            // 収集物アイテムのタグ
-    [Header("スコアアイテムのタグの名前")]
-    [SerializeField] string scoreNameTag;           // スコアアイテムのタグ
     [Header("接地判定のレイヤー")]
     [SerializeField] LayerMask groundLayer;         // 地面チェック用のレイヤー
     [Header("ジャンプの初速度")]
     [SerializeField] float vec0 = 0.25f;            // ジャンプの初速度
-    [Header("大ジャンプの倍率")]
-    [SerializeField] float bigJump = 1.35f;         // 大ジャンプのジャンプの倍率
     [Header("走る速度")]
     [SerializeField] float runSpeed = 0.2f;         // 走る速度
     [Header("落下死亡判定座標")]
@@ -32,13 +24,12 @@ public class PlayerController : MonoBehaviour
     bool isSpeedUp = false;     // 加速するフラグ
     bool isOverHead = false;    // 頭上に天井があるかのフラグ
     bool isCollision = false;   // 壁に衝突したかのフラグ
+    bool isJumpRamp = false;    // ジャンプ台を踏んだかのフラグ
 
     int jumpCount = 0;              // ジャンプ回数
     int speedUpTime = 0;            // 加速継続時間
     float jumpSpeed = 0.0f;         // ジャンプの速度
     float jumpTime = 0.0f;          // ジャンプしている時間
-    float gravity = 0.0f;           // 重力値
-    float fallTime = 0.0f;          // 落下時間
 
     const int MAXJUMPCOUNT = 2;     // 最大ジャンプ回数
     const float GRAVITYACCELERATOR = 0.98f;     // 重力加速度
@@ -62,7 +53,7 @@ public class PlayerController : MonoBehaviour
         if (!isMove) return;
 
         // スペースキーを押したらジャンプを行うフラグを建てる
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < MAXJUMPCOUNT)
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < MAXJUMPCOUNT && !isJump)
         {
             // ジャンプのフラグを入れる
             isJump = true;
@@ -95,27 +86,17 @@ public class PlayerController : MonoBehaviour
         // 走る処理
         if (!isCollision) { Run(); }
 
-
-        // 空中におり、ジャンプ中ではないなら落下させる
-        //if (!isGround && !isJump)
-        //{
-        //    Gravity();
-        //}
-        //else
-        //{
-        //    // 落下の値の0にする
-        //    gravity = 0.0f;
-        //    fallTime = 0.0f;
-        //}
-
         // 自身の現在のY座標が死亡ラインの座標以下ならば死亡処理を行う
         if (transform.position.y < deadLine_y) { Dead(); }
+
     }
     // 前に走る処理
     void Run()
     {
         // 速度の倍率
         float mag = 1.0f;
+        // ジャンプ台によるジャンプ中なら速度を半分にする
+        if (isJumpRamp) { mag /= 2.0f; }
         // 加速中なら速度を2倍にする
         if (isSpeedUp) { mag *= 2.0f; speedUpTime--; }
         // 座標に速度を入れる
@@ -142,6 +123,7 @@ public class PlayerController : MonoBehaviour
         if (jumpSpeed <= 0.0f || isOverHead)
         {
             isJump = false;
+            isJumpRamp = false;
             anime.SetBool("isJump", false);
         }
         else
@@ -162,16 +144,6 @@ public class PlayerController : MonoBehaviour
 
         // ゲームオーバーのUIの処理を開始する
         gameOverManager.GameOver();
-    }
-    // 重力の計算
-    void Gravity()
-    {
-        // 経過時間を入れる
-        fallTime += Time.deltaTime;
-        // 落下速度を計算する
-        gravity = GRAVITYACCELERATOR * fallTime;
-        // 落下値を適用する
-        transform.position -= new Vector3(0, gravity, 0);
     }
     void GroundCheck()
     {
@@ -215,16 +187,22 @@ public class PlayerController : MonoBehaviour
             {
                 case _ItemKinds.ScoreItem:
                     // UIに反映する
-                    scoreManager.SetScore(collision.gameObject.GetComponent<ItemData>().GetValue);
+                    scoreManager.SetScore((int)collision.gameObject.GetComponent<ItemData>().GetValue);
                     break;
                 case _ItemKinds.Collectibles:
                     // UIに反映する
-                    collectiblesUI.SetCollectibles(collision.gameObject.GetComponent<ItemData>().GetValue);
+                    collectiblesUI.SetCollectibles((int)collision.gameObject.GetComponent<ItemData>().GetValue);
                     break;
                 case _ItemKinds.Accelerator:
                     // 一定時間加速する
                     isSpeedUp = true;
-                    speedUpTime = collision.gameObject.GetComponent<ItemData>().GetValue;
+                    speedUpTime = (int)collision.gameObject.GetComponent<ItemData>().GetValue;
+                    break;
+                case _ItemKinds.JumpRamp:
+                    // 即時ジャンプする
+                    jumpSpeed = collision.gameObject.GetComponent<ItemData>().GetValue;
+                    isJumpRamp = true;
+                    isJump = true;
                     break;
             }
         }

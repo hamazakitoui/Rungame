@@ -120,15 +120,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f933390d44bff6f49bcf2099108365b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accelerateNameTag: SpeedCrystal
-  coinNameTag: Coin
-  scoreNameTag: score
   groundLayer:
     serializedVersion: 2
     m_Bits: 192
   vec0: 0.35
-  bigJump: 1.35
   runSpeed: 0.2
+  deadLine_y: -5
+  gameOverManager: {fileID: 0}
   scoreManager: {fileID: 0}
   collectiblesUI: {fileID: 0}
 --- !u!70 &369442590415239945
