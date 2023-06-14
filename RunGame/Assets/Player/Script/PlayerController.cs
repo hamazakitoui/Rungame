@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float runSpeed = 0.2f;         // 走る速度
     [Header("落下死亡判定座標")]
     [SerializeField] float deadLine_y = -5f;        // 落下死亡判定の座標
+    [Header("SEのデータ")]
+    [SerializeField] PlayerSEData seData;           // 効果音データ
 
     [SerializeField] GameOverManager gameOverManager;// ゲームオーバーUI管理
     [SerializeField] ScoreManager scoreManager;     // スコア表示管理
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour
     bool isOverHead = false;    // 頭上に天井があるかのフラグ
     bool isCollision = false;   // 壁に衝突したかのフラグ
     bool isJumpRamp = false;    // ジャンプ台を踏んだかのフラグ
+    bool isDeathCollision = false;  // ぶつかって倒れたかのフラグ
 
     int jumpCount = 0;              // ジャンプ回数
     int speedUpTime = 0;            // 加速継続時間
@@ -50,7 +53,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // 行動禁止の場合、処理しない
-        if (!isMove) return;
+        if (!isMove || isDead) return;
 
         // スペースキーを押したらジャンプを行うフラグを建てる
         if (Input.GetKeyDown(KeyCode.Space) && jumpCount < MAXJUMPCOUNT && !isJump)
@@ -66,7 +69,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         // 行動禁止の場合、処理しない
-        if (!isMove) return;
+        if (!isMove || isDead) return;
 
         // 接地しているかの判定を行う
         GroundCheck();
@@ -75,7 +78,7 @@ public class PlayerController : MonoBehaviour
         // 壁に衝突判定
         IsWallCheck();
         // 衝突した場合、処理を行う
-        if (isCollision) { Dead(); return; }
+        if (isCollision && !isDead) { isDeathCollision = true; isDead = true; Dead(); return; }
 
         // 接地しており、ジャンプ中でなければ、ジャンプの回数をリセットする
         if (isGround && !isJump) { jumpCount = 0; }
@@ -87,12 +90,20 @@ public class PlayerController : MonoBehaviour
         if (!isCollision) { Run(); }
 
         // 自身の現在のY座標が死亡ラインの座標以下ならば死亡処理を行う
-        if (transform.position.y < deadLine_y) { Dead(); }
+        if (transform.position.y < deadLine_y) { isDead = true; Dead(); }
 
+        // ステージクリアした場合、クリアモーションへ移行し停止する
+        if (isStageClear) { 
+            isMove = false; 
+            // アニメーターのフラグを変更する
+            anime.SetBool("isClear", true);
+        }
     }
     // 前に走る処理
     void Run()
     {
+        // アニメーターのフラグを変更する
+        anime.SetBool("isRun", true);
         // 速度の倍率
         float mag = 1.0f;
         // ジャンプ台によるジャンプ中なら速度を半分にする
@@ -138,12 +149,39 @@ public class PlayerController : MonoBehaviour
         // 死亡アニメーションを再生する
         anime.SetBool("isDead", true);
 
-        // 重力を0にする
-        rigidbody.gravityScale = 0;
-        rigidbody.velocity = Vector3.zero;
+        // コライダーをOFFにする
+        this.GetComponent<CapsuleCollider2D>().enabled = false;
+
+        // 衝突して倒れた場合、後方へ吹っ飛ばす
+        if (isDeathCollision) { StartCoroutine("DeadFlyAway"); }
 
         // ゲームオーバーのUIの処理を開始する
         gameOverManager.GameOver();
+    }
+
+    IEnumerator DeadFlyAway()
+    {
+        // 回転値
+        Vector3 rotation = new Vector3(0, 0, 0);
+
+        // 回転禁止を解く
+        rigidbody.freezeRotation = false;
+
+        while (true)
+        {
+            // 回転値に加算する
+            rotation += new Vector3(0, 0, runSpeed);
+            // 回転させる
+            transform.Rotate(rotation);
+            // 重力を0にする
+            rigidbody.velocity = Vector3.zero;
+            // 速度を入れる
+            jumpSpeed = vec0;
+            // 後方へ飛ぶ
+            transform.position += new Vector3(-jumpSpeed, jumpSpeed, 0);
+            // 一瞬停止
+            yield return null;
+        }
     }
     void GroundCheck()
     {
@@ -208,10 +246,17 @@ public class PlayerController : MonoBehaviour
         }
 
         // 敵と接触したかの判定
-        if(collision.gameObject.GetComponent<IEnemy>() != null)
+        if(collision.gameObject.GetComponent<IEnemy>() != null && !isDead)
         {
             // 接触しているならば死亡処理に移る
+            isDead = true;
             Dead();
+        }
+
+        // ゴールに接触したかの判定
+        if(collision.gameObject.GetComponent<GoalPoint>() != null && isDead)
+        {
+
         }
     }
 }

@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 28.5196, y: -30}
+  m_AnchoredPosition: {x: 28.5196, y: -33}
   m_SizeDelta: {x: 393.5152, y: 140.1925}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7540810715278155917
@@ -272,13 +272,14 @@ GameObject:
   - component: {fileID: 3834071329882388290}
   - component: {fileID: 7525658048916303756}
   - component: {fileID: 7393946459446622363}
+  - component: {fileID: 2872430011951217289}
   m_Layer: 5
   m_Name: GameOverManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3834071329882388290
 RectTransform:
   m_ObjectHideFlags: 0
@@ -300,7 +301,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 358}
   m_SizeDelta: {x: 494.7847, y: 295.2261}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7525658048916303756
@@ -324,6 +325,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectImage: {fileID: 5673033225987479833}
+--- !u!95 &2872430011951217289
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2452464457427086704}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4ab588fa386c558408935cd649e7ff61, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4252630895574398055
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,7 +483,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!114 &4360205811688388608
 MonoBehaviour:
