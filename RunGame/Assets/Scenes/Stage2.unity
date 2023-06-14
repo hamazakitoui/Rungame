@@ -375,6 +375,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6148359291754266135, guid: 1c9b9a2a0a869d44d9e6da0489ddc51c, type: 3}
+      propertyPath: FadeCanvas
+      value: 
+      objectReference: {fileID: 1398900472}
     - target: {fileID: 6769339302409937612, guid: 1c9b9a2a0a869d44d9e6da0489ddc51c, type: 3}
       propertyPath: m_Name
       value: FadeManager
@@ -912,6 +916,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 279176067724533692, guid: a6f214a148404e545804aea177b5ef52, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 279176067724533692, guid: a6f214a148404e545804aea177b5ef52, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1053334520465783851, guid: a6f214a148404e545804aea177b5ef52, type: 3}
       propertyPath: m_SizeDelta.y
       value: 538
@@ -1006,6 +1018,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6f214a148404e545804aea177b5ef52, type: 3}
+--- !u!1 &1398900472 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7297816853745859704, guid: a6f214a148404e545804aea177b5ef52, type: 3}
+  m_PrefabInstance: {fileID: 1398900471}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1513687400 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6020734218271894137, guid: 915d591ec08346c4184546ddbbea3d40, type: 3}
