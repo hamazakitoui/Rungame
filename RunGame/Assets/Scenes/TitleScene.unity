@@ -905,6 +905,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectScene:
     sceneName: SelectScene
+  bgm:
+    audioName: "\u30BF\u30A4\u30C8\u30EB\u3068\u30BB\u30EC\u30AF\u30C8BGM"
 --- !u!1 &1516014844
 GameObject:
   m_ObjectHideFlags: 0

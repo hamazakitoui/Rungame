@@ -1462,6 +1462,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81a7ec136e6b5894a9f1bb405cf5db2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bgm:
+    audioName: "\u30BF\u30A4\u30C8\u30EB\u3068\u30BB\u30EC\u30AF\u30C8BGM"
   scenes:
   - {fileID: 1192939873}
   - {fileID: 1120011183}
