@@ -126,6 +126,7 @@ MonoBehaviour:
   vec0: 0.35
   runSpeed: 0.2
   deadLine_y: -5
+  seData: {fileID: 11400000, guid: c463bee34ec57b149b72a163475f3235, type: 2}
   gameOverManager: {fileID: 0}
   scoreManager: {fileID: 0}
   collectiblesUI: {fileID: 0}
