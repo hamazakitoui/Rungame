@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 3834071329882388290}
   - component: {fileID: 7525658048916303756}
   - component: {fileID: 7393946459446622363}
-  - component: {fileID: 2872430011951217289}
+  - component: {fileID: 344500380928011561}
   m_Layer: 5
   m_Name: GameOverManager
   m_TagString: Untagged
@@ -325,7 +325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectImage: {fileID: 5673033225987479833}
---- !u!95 &2872430011951217289
+--- !u!95 &344500380928011561
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0

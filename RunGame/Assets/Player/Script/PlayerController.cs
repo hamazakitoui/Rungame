@@ -256,7 +256,10 @@ public class PlayerController : MonoBehaviour
         // ゴールに接触したかの判定
         if(collision.gameObject.GetComponent<GoalPoint>() != null && isDead)
         {
-
+            // 接触しているならばクリアフラグを立てる
+            collision.gameObject.GetComponent<GoalPoint>().GameClear();
+            isMove = false;
+            anime.SetBool("isClear", true);
         }
     }
 }
