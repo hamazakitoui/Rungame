@@ -621,6 +621,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6f214a148404e545804aea177b5ef52, type: 3}
+--- !u!1 &538249328 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7297816853745859704, guid: a6f214a148404e545804aea177b5ef52, type: 3}
+  m_PrefabInstance: {fileID: 538249327}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &579384175
 GameObject:
   m_ObjectHideFlags: 0
@@ -79464,6 +79469,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6148359291754266135, guid: 1c9b9a2a0a869d44d9e6da0489ddc51c, type: 3}
+      propertyPath: FadeCanvas
+      value: 
+      objectReference: {fileID: 538249328}
     - target: {fileID: 6769339302409937612, guid: 1c9b9a2a0a869d44d9e6da0489ddc51c, type: 3}
       propertyPath: m_Name
       value: FadeManager
