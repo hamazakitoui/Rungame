@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     Animator anime;             // アニメーターコンポーネント
     Rigidbody2D rigidbody;      // 物理挙動コンポーネント
 
+    ParticleSystem dustCloudEffect; // 土煙エフェクト
+
     bool isJump = false;        // ジャンプフラグ
     bool isGround = false;      // 接地フラグ
     bool isSpeedUp = false;     // 加速するフラグ
@@ -47,6 +49,9 @@ public class PlayerController : MonoBehaviour
         // コンポーネントを取得
         anime = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();
+
+        // エフェクトを取得
+        dustCloudEffect = transform.GetChild(0).gameObject.GetComponent<ParticleSystem>();
 
         isMove = true;
     }
@@ -104,6 +109,8 @@ public class PlayerController : MonoBehaviour
     {
         // アニメーターのフラグを変更する
         anime.SetBool("isRun", true);
+        // エフェクトを表示
+        if (isGround) { dustCloudEffect.Play(); }
         // 速度の倍率
         float mag = 1.0f;
         // ジャンプ台によるジャンプ中なら速度を半分にする
@@ -121,6 +128,8 @@ public class PlayerController : MonoBehaviour
         // アニメーターのフラグを変更する
         anime.SetBool("isJump", true);
 
+        // エフェクトを非表示
+        dustCloudEffect.Stop(false);
         // 重力を0にする
         rigidbody.velocity = Vector3.zero;
 
@@ -148,7 +157,8 @@ public class PlayerController : MonoBehaviour
     {
         // 死亡アニメーションを再生する
         anime.SetBool("isDead", true);
-
+        // エフェクトを非表示
+        dustCloudEffect.Stop(false);
         // コライダーをOFFにする
         this.GetComponent<CapsuleCollider2D>().enabled = false;
 
@@ -260,6 +270,9 @@ public class PlayerController : MonoBehaviour
             collision.gameObject.GetComponent<GoalPoint>().GameClear();
             isMove = false;
             anime.SetBool("isClear", true);
+
+            // エフェクトを非表示
+            dustCloudEffect.Stop(false);
         }
     }
 }
