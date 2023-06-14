@@ -83,7 +83,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.9375, y: 1.3125}
+  m_Size: {x: 0.59375, y: 1.375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -177,7 +177,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7343663402335533021, guid: 2a4f2c368d5f11a4dbf67523b808aaba, type: 3}
       propertyPath: m_Name
-      value: Particle System
+      value: DustCloud
       objectReference: {fileID: 0}
     - target: {fileID: 7667232689040894643, guid: 2a4f2c368d5f11a4dbf67523b808aaba, type: 3}
       propertyPath: m_RootOrder
@@ -189,7 +189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7667232689040894643, guid: 2a4f2c368d5f11a4dbf67523b808aaba, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.11
       objectReference: {fileID: 0}
     - target: {fileID: 7667232689040894643, guid: 2a4f2c368d5f11a4dbf67523b808aaba, type: 3}
       propertyPath: m_LocalPosition.z
