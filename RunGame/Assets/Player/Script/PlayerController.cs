@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     Animator anime;             // アニメーターコンポーネント
     Rigidbody2D rigidbody;      // 物理挙動コンポーネント
 
+    ParticleSystem dustCloudEffect; // 土煙エフェクト
+
     bool isJump = false;        // ジャンプフラグ
     bool isGround = false;      // 接地フラグ
     bool isSpeedUp = false;     // 加速するフラグ
@@ -48,6 +50,9 @@ public class PlayerController : MonoBehaviour
         anime = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();
 
+        // エフェクトを取得
+        dustCloudEffect = transform.GetChild(0).gameObject.GetComponent<ParticleSystem>();
+
         isMove = true;
     }
     void Update()
@@ -56,7 +61,7 @@ public class PlayerController : MonoBehaviour
         if (!isMove || isDead) return;
 
         // スペースキーを押したらジャンプを行うフラグを建てる
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < MAXJUMPCOUNT && !isJump)
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < MAXJUMPCOUNT)
         {
             // ジャンプのフラグを入れる
             isJump = true;
@@ -104,6 +109,8 @@ public class PlayerController : MonoBehaviour
     {
         // アニメーターのフラグを変更する
         anime.SetBool("isRun", true);
+        // エフェクトを表示
+        if (isGround) { dustCloudEffect.Play(); }
         // 速度の倍率
         float mag = 1.0f;
         // ジャンプ台によるジャンプ中なら速度を半分にする
@@ -121,6 +128,8 @@ public class PlayerController : MonoBehaviour
         // アニメーターのフラグを変更する
         anime.SetBool("isJump", true);
 
+        // エフェクトを非表示
+        dustCloudEffect.Stop(false);
         // 重力を0にする
         rigidbody.velocity = Vector3.zero;
 
@@ -148,7 +157,8 @@ public class PlayerController : MonoBehaviour
     {
         // 死亡アニメーションを再生する
         anime.SetBool("isDead", true);
-
+        // エフェクトを非表示
+        dustCloudEffect.Stop(false);
         // コライダーをOFFにする
         this.GetComponent<CapsuleCollider2D>().enabled = false;
 
@@ -203,17 +213,29 @@ public class PlayerController : MonoBehaviour
     }
     void IsWallCheck()
     {
-        // 進行方向に壁があるか判定
+        // 進行方向に壁があるか判定（頭）
         isCollision = Physics2D.Linecast(
-        transform.position + new Vector3(0.25f * transform.localScale.x, 1f, 0f),
-        transform.position + new Vector3(0.45f * transform.localScale.x, 1f, 0f),
+        transform.position + new Vector3(0.3f * transform.localScale.x, 1.15f, 0f),
+        transform.position + new Vector3(0.5f * transform.localScale.x, 1.15f, 0f),
         groundLayer
         );
         // レイを表示してみる
         Debug.DrawLine(
-        transform.position + new Vector3(0.25f * transform.localScale.x, 1f, 0f),
-        transform.position + new Vector3(0.45f * transform.localScale.x, 1f, 0f),
+        transform.position + new Vector3(0.3f * transform.localScale.x, 1.15f, 0f),
+        transform.position + new Vector3(0.5f * transform.localScale.x, 1.15f, 0f),
         Color.red);
+
+        // 進行方向に壁があるか判定(足元）
+        isCollision = Physics2D.Linecast(
+        transform.position + new Vector3(0.3f * transform.localScale.x, 0.25f, 0f),
+        transform.position + new Vector3(0.5f * transform.localScale.x, 0.25f, 0f),
+        groundLayer
+        );
+        // レイを表示してみる
+        Debug.DrawLine(
+        transform.position + new Vector3(0.3f * transform.localScale.x, 0.25f, 0f),
+        transform.position + new Vector3(0.5f * transform.localScale.x, 0.25f, 0f),
+        Color.green);
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -243,10 +265,12 @@ public class PlayerController : MonoBehaviour
                     isJump = true;
                     break;
             }
+            // 接触したアイテムを削除
+            Destroy(collision.gameObject);
         }
 
         // 敵と接触したかの判定
-        if(collision.gameObject.GetComponent<IEnemy>() != null && !isDead)
+        if (collision.gameObject.GetComponent<IEnemy>() != null && !isDead)
         {
             // 接触しているならば死亡処理に移る
             isDead = true;
@@ -260,6 +284,9 @@ public class PlayerController : MonoBehaviour
             collision.gameObject.GetComponent<GoalPoint>().GameClear();
             isMove = false;
             anime.SetBool("isClear", true);
+
+            // エフェクトを非表示
+            dustCloudEffect.Stop(false);
         }
     }
 }
