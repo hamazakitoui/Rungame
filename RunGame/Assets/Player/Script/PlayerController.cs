@@ -61,14 +61,14 @@ public class PlayerController : MonoBehaviour
         if (!isMove || isDead) return;
 
         // スペースキーを押したらジャンプを行うフラグを建てる
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < MAXJUMPCOUNT && !isJump)
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < MAXJUMPCOUNT)
         {
             // ジャンプのフラグを入れる
             isJump = true;
             // ジャンプのカウントを行う
             jumpCount++;
             // ジャンプに初速度を入れる
-            jumpSpeed = vec0;
+            jumpSpeed += vec0;
         }
     }
     void FixedUpdate()
@@ -213,17 +213,29 @@ public class PlayerController : MonoBehaviour
     }
     void IsWallCheck()
     {
-        // 進行方向に壁があるか判定
+        // 進行方向に壁があるか判定（頭）
         isCollision = Physics2D.Linecast(
-        transform.position + new Vector3(0.25f * transform.localScale.x, 1f, 0f),
-        transform.position + new Vector3(0.45f * transform.localScale.x, 1f, 0f),
+        transform.position + new Vector3(0.3f * transform.localScale.x, 1.15f, 0f),
+        transform.position + new Vector3(0.5f * transform.localScale.x, 1.15f, 0f),
         groundLayer
         );
         // レイを表示してみる
         Debug.DrawLine(
-        transform.position + new Vector3(0.25f * transform.localScale.x, 1f, 0f),
-        transform.position + new Vector3(0.45f * transform.localScale.x, 1f, 0f),
+        transform.position + new Vector3(0.3f * transform.localScale.x, 1.15f, 0f),
+        transform.position + new Vector3(0.5f * transform.localScale.x, 1.15f, 0f),
         Color.red);
+
+        // 進行方向に壁があるか判定(足元）
+        isCollision = Physics2D.Linecast(
+        transform.position + new Vector3(0.3f * transform.localScale.x, 0.25f, 0f),
+        transform.position + new Vector3(0.5f * transform.localScale.x, 0.25f, 0f),
+        groundLayer
+        );
+        // レイを表示してみる
+        Debug.DrawLine(
+        transform.position + new Vector3(0.3f * transform.localScale.x, 0.25f, 0f),
+        transform.position + new Vector3(0.5f * transform.localScale.x, 0.25f, 0f),
+        Color.green);
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -253,10 +265,12 @@ public class PlayerController : MonoBehaviour
                     isJump = true;
                     break;
             }
+            // 接触したアイテムを削除
+            Destroy(collision.gameObject);
         }
 
         // 敵と接触したかの判定
-        if(collision.gameObject.GetComponent<IEnemy>() != null && !isDead)
+        if (collision.gameObject.GetComponent<IEnemy>() != null && !isDead)
         {
             // 接触しているならば死亡処理に移る
             isDead = true;

@@ -549,6 +549,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 369442590415239940, guid: 0ec77a8ff0651c743b8a571ef086f315, type: 3}
+      propertyPath: runSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 369442590415239940, guid: 0ec77a8ff0651c743b8a571ef086f315, type: 3}
       propertyPath: scoreManager
       value: 
       objectReference: {fileID: 4675655327674914975}
