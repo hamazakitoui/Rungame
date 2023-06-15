@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
             // ジャンプのカウントを行う
             jumpCount++;
             // ジャンプに初速度を入れる
-            jumpSpeed += vec0;
+            jumpSpeed = vec0;
         }
     }
     void FixedUpdate()
