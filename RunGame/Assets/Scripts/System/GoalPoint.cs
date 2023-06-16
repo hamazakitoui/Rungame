@@ -5,6 +5,8 @@ using UnityEngine;
 /// <summary> ゴールポイント </summary>
 public class GoalPoint : MonoBehaviour
 {
+    // オブジェクトタグ
+    readonly string playerTag = "Player";
     private bool isClear = false; // クリアフラグ
     [Header("ステージ番号")] [SerializeField] private int stageNum;
     [Header("セレクトシーン")] [SerializeField] private SceneObject selectScene;
@@ -28,5 +30,9 @@ public class GoalPoint : MonoBehaviour
         SaveManager.Instance.Save(data); // セーブ
         FadeSceneManager.Instance.LoadScene(selectScene); // セレクトシーンに移動
         isClear = true;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == playerTag) GameClear(); // プレイヤーに当たったらクリア
     }
 }
