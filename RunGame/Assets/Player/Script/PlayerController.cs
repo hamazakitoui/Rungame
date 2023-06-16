@@ -14,12 +14,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float deadLine_y = -5f;        // 落下死亡判定の座標
     [Header("SEのデータ")]
     [SerializeField] PlayerSEData seData;           // 効果音データ
-
+    [Header("二段目のジャンプのエフェクト")]
+    [SerializeField] ParticleSystem JumpSmoke;      // ジャンプ時の土煙
+    [Header("各UIスクリプト")]
     [SerializeField] GameOverManager gameOverManager;// ゲームオーバーUI管理
     [SerializeField] ScoreManager scoreManager;     // スコア表示管理
     [SerializeField] CollectiblesUI collectiblesUI; // 収集物入手管理
     Animator anime;             // アニメーターコンポーネント
-    Rigidbody2D rigidbody;      // 物理挙動コンポーネント
+    new Rigidbody2D rigidbody;  // 物理挙動コンポーネント
+    new AudioSource audio;      // 音声コンポーネント
 
     ParticleSystem dustCloudEffect; // 土煙エフェクト
 
@@ -49,7 +52,7 @@ public class PlayerController : MonoBehaviour
         // コンポーネントを取得
         anime = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();
-
+        audio = GetComponent<AudioSource>();
         // エフェクトを取得
         dustCloudEffect = transform.GetChild(0).gameObject.GetComponent<ParticleSystem>();
 
@@ -69,6 +72,8 @@ public class PlayerController : MonoBehaviour
             jumpCount++;
             // ジャンプに初速度を入れる
             jumpSpeed = vec0;
+            // 二段ジャンプ目に土煙を出す
+            if(jumpCount >= MAXJUMPCOUNT) { Instantiate(JumpSmoke, transform.position, Quaternion.identity); }
         }
     }
     void FixedUpdate()
@@ -155,6 +160,13 @@ public class PlayerController : MonoBehaviour
     // 死亡処理
     void Dead()
     {
+        // 音データがあるかをチェック
+        if(seData.GetDeadSE != null)
+        {
+            // 死亡効果音を鳴らす
+            audio.clip = seData.GetDeadSE;
+            audio.Play();
+        }
         // 死亡アニメーションを再生する
         anime.SetBool("isDead", true);
         // エフェクトを非表示
@@ -248,21 +260,49 @@ public class PlayerController : MonoBehaviour
                 case _ItemKinds.ScoreItem:
                     // UIに反映する
                     scoreManager.SetScore((int)collision.gameObject.GetComponent<ItemData>().GetValue);
+                    // 音データがあるかをチェック
+                    if (seData.GetScoreSE != null)
+                    {
+                        // 死亡効果音を鳴らす
+                        audio.clip = seData.GetScoreSE;
+                        audio.Play();
+                    }
                     break;
                 case _ItemKinds.Collectibles:
                     // UIに反映する
                     collectiblesUI.SetCollectibles((int)collision.gameObject.GetComponent<ItemData>().GetValue);
+                    // 音データがあるかをチェック
+                    if (seData.GetCollectiblesSE != null)
+                    {
+                        // 死亡効果音を鳴らす
+                        audio.clip = seData.GetCollectiblesSE;
+                        audio.Play();
+                    }
                     break;
                 case _ItemKinds.Accelerator:
                     // 一定時間加速する
                     isSpeedUp = true;
                     speedUpTime = (int)collision.gameObject.GetComponent<ItemData>().GetValue;
+                    // 音データがあるかをチェック
+                    if (seData.GetAcceleratorSE != null)
+                    {
+                        // 死亡効果音を鳴らす
+                        audio.clip = seData.GetAcceleratorSE;
+                        audio.Play();
+                    }
                     break;
                 case _ItemKinds.JumpRamp:
                     // 即時ジャンプする
                     jumpSpeed = collision.gameObject.GetComponent<ItemData>().GetValue;
                     isJumpRamp = true;
                     isJump = true;
+                    // 音データがあるかをチェック
+                    if (seData.GetJumpRampSE != null)
+                    {
+                        // 死亡効果音を鳴らす
+                        audio.clip = seData.GetJumpRampSE;
+                        audio.Play();
+                    }
                     break;
             }
             // 接触したアイテムを削除

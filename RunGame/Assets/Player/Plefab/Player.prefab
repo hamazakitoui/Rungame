@@ -129,6 +129,7 @@ MonoBehaviour:
   runSpeed: 0.2
   deadLine_y: -5
   seData: {fileID: 11400000, guid: c463bee34ec57b149b72a163475f3235, type: 2}
+  JumpSmoke: {fileID: 1410015881289365226, guid: 31ab5870811caa349aa4ce4b6dc5a60d, type: 3}
   gameOverManager: {fileID: 0}
   scoreManager: {fileID: 0}
   collectiblesUI: {fileID: 0}
