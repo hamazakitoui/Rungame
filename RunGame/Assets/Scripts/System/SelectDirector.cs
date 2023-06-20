@@ -17,6 +17,7 @@ public class SelectDirector : MonoBehaviour
         if (bgm != null && bgm != "") AudioManager.Instance.PlayBGM(bgm); // BGM再生
         SaveManager.Instance.Load(); // セーブデータ読み込み
         SaveData data = SaveManager.Instance.GetData; // ステージデータ
+        Debug.Log(data.StageLength);
         // 選択できるシーンを初期化
         for(int s = 0; s < scenes.Length; s++)
         {
