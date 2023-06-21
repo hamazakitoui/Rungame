@@ -15,8 +15,8 @@ public class SelectDirector : MonoBehaviour
     void Start()
     {
         if (bgm != null && bgm != "") AudioManager.Instance.PlayBGM(bgm); // BGM再生
+        SaveManager.Instance.Load(); // 読み込み
         SaveData data = SaveManager.Instance.GetData; // ステージデータ
-        Debug.Log(data.GetStageClear(1));
         // 選択できるシーンを初期化
         for(int s = 0; s < scenes.Length; s++)
         {
@@ -33,6 +33,7 @@ public class SelectDirector : MonoBehaviour
                 if (data.GetStageClear(s - 1)) StartCoroutine(SceneActive(scenes[s], s));
                 else scenes[s].SetActive(false); // 非表示
             }
+            Debug.Log(data.GetStageClear(s));
         }
     }
     /// <summary> セレクトボタン出現イベント </summary>
