@@ -43,7 +43,7 @@ public class SaveManager : MonoBehaviour
         data = new SaveData();
         for(int d = 0; d < data.StageLength; d++)
         {
-            data.SetStageClear(d, d == 0);
+            data.SetStageClear(d, false);
             data.SetAchievement(d, false);
         }
     }
