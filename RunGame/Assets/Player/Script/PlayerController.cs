@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     new AudioSource audio;      // 音声コンポーネント
 
     ParticleSystem dustCloudEffect; // 土煙エフェクト
+    PlayerAfterimage afterimage;    // 残像エフェクト
 
     bool isJump = false;        // ジャンプフラグ
     bool isGround = false;      // 接地フラグ
@@ -55,6 +56,8 @@ public class PlayerController : MonoBehaviour
         audio = GetComponent<AudioSource>();
         // エフェクトを取得
         dustCloudEffect = transform.GetChild(0).gameObject.GetComponent<ParticleSystem>();
+        // スクリプトを取得
+        afterimage = transform.GetChild(1).gameObject.GetComponent<PlayerAfterimage>();
 
         isMove = true;
     }
@@ -125,7 +128,7 @@ public class PlayerController : MonoBehaviour
         // 座標に速度を入れる
         transform.position += new Vector3(runSpeed * mag, 0f, 0f);
         // 加速経過時間が最大継続時間を超えたら加速を終える
-        if (speedUpTime <= 0) { isSpeedUp = false; }
+        if (speedUpTime <= 0) { isSpeedUp = false; afterimage.EndGenerator(); }
     }
     // ジャンプの処理
     void Jump()
@@ -263,7 +266,7 @@ public class PlayerController : MonoBehaviour
                     // 音データがあるかをチェック
                     if (seData.GetScoreSE != null)
                     {
-                        // 死亡効果音を鳴らす
+                        // スコア入手効果音を鳴らす
                         audio.clip = seData.GetScoreSE;
                         audio.Play();
                     }
@@ -283,10 +286,11 @@ public class PlayerController : MonoBehaviour
                     // 一定時間加速する
                     isSpeedUp = true;
                     speedUpTime = (int)collision.gameObject.GetComponent<ItemData>().GetValue;
+                    afterimage.StartGenerator(transform, GetComponent<SpriteRenderer>());
                     // 音データがあるかをチェック
                     if (seData.GetAcceleratorSE != null)
                     {
-                        // 死亡効果音を鳴らす
+                        // 加速効果音を鳴らす
                         audio.clip = seData.GetAcceleratorSE;
                         audio.Play();
                     }
@@ -299,7 +303,7 @@ public class PlayerController : MonoBehaviour
                     // 音データがあるかをチェック
                     if (seData.GetJumpRampSE != null)
                     {
-                        // 死亡効果音を鳴らす
+                        // ジャンプ台効果音を鳴らす
                         audio.clip = seData.GetJumpRampSE;
                         audio.Play();
                     }
