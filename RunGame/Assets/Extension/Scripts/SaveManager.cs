@@ -157,6 +157,7 @@ public struct SaveData
     public int StageLength { get { return arrayData.stageClear.Length; } }
 }
 /// <summary> 配列保存用クラス </summary>
+[Serializable]
 public class SavaArrayData
 {
     const int DATA_LENGTH = 5; // 要素数
