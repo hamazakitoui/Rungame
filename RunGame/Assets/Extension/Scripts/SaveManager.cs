@@ -142,6 +142,7 @@ public struct SaveData
     /// <returns>ステージのクリア状況</returns>
     public bool GetStageClear(int element)
     {
+        Debug.Log(stageClear[0]);
         if (element >= stageClear.Length) return false; // 要素数を超えたらFalseを必ず返す
         return stageClear[element];
     }
