@@ -15,7 +15,6 @@ public class SaveManager : MonoBehaviour
     private const string SAVE_FILE_PATH = "SaveData.json", ENCODE_CODE = "UTF-8";
     private SaveData data; // セーブデータ
     private static SaveManager instance; // インスタンス保存用変数
-    [SerializeField] private int stageSum = 1; // ステージ総数
     /// <summary> シングルトン </summary>
     public static SaveManager Instance
     {
@@ -40,7 +39,7 @@ public class SaveManager : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(this.gameObject);
-        data = new SaveData(stageSum); // セーブデータ初期化
+        data = new SaveData(0); // セーブデータ初期化
     }
     /// <summary> セーブ </summary>
     public void Save()
@@ -107,53 +106,60 @@ public class SaveManager : MonoBehaviour
 public struct SaveData
 {
     // ステージクリア配列、実績配列
-    private bool[] stageClear, stageAchievement;
+    private SavaArrayData arrayData;
     public int Score; // スコア
     /// <summary> コンストラクタ </summary>
-    /// <param name="num">ステージ数</param>
+    /// <param name="num">初期スコア</param>
     public SaveData(int num)
     {
         Score = 0; // スコア初期化
-        stageClear = new bool[num]; // クリア状況初期化
-        stageAchievement = new bool[num]; // 実績初期化
+        arrayData = new SavaArrayData(); // 配列生成
         // 要素初期化
-        for (int i = 0; i < num; i++)
+        for (int i = 0; i < arrayData.stageClear.Length; i++)
         {
-            stageClear[i] = false;
-            stageAchievement[i] = false;
+            arrayData.stageClear[i] = false;
+            arrayData.stageAchievement[i] = false;
         }
     }
+
     /// <summary> クリア状況設定 </summary>
     /// <param name="element">ステージ番号</param> <param name="value">設定する要素</param>
     public void SetStageClear(int element, bool value)
     {
-        if (element >= stageClear.Length) return; // 要素数超えていたら無視
-        stageClear[element] = value;
+        if (element >= arrayData.stageClear.Length) return; // 要素数超えていたら無視
+        arrayData.stageClear[element] = value;
     }
     /// <summary> 実績設定 </summary>
     /// <param name="element">ステージ番号</param> <param name="value">設定する要素</param>
     public void SetAchievement(int element, bool value)
     {
-        if (element >= stageAchievement.Length) return; // 要素数超えていたら無視
-        stageAchievement[element] = value;
+        if (element >= arrayData.stageAchievement.Length) return; // 要素数超えていたら無視
+        arrayData.stageAchievement[element] = value;
     }
     /// <summary> クリア状況取得 </summary>
     /// <param name="element">ステージ番号</param>
     /// <returns>ステージのクリア状況</returns>
     public bool GetStageClear(int element)
     {
-        Debug.Log(stageClear[0]);
-        if (element >= stageClear.Length) return false; // 要素数を超えたらFalseを必ず返す
-        return stageClear[element];
+        if (element >= arrayData.stageClear.Length) return false; // 要素数を超えたらFalseを必ず返す
+        return arrayData.stageClear[element];
     }
     /// <summary> 実績取得 </summary>
     /// <param name="element">ステージ番号</param>
     /// <returns>ステージの実績</returns>
     public bool GetAchievement(int element)
     {
-        if (element >= stageAchievement.Length) return false; // 要素数を超えたらFalseを必ず返す
-        return stageAchievement[element];
+        // 要素数を超えたらFalseを必ず返す
+        if (element >= arrayData.stageAchievement.Length) return false;
+        return arrayData.stageAchievement[element];
     }
     /// <summary> ステージ数 </summary>
-    public int StageLength { get { return stageClear.Length; } }
+    public int StageLength { get { return arrayData.stageClear.Length; } }
+}
+/// <summary> 配列保存用クラス </summary>
+public class SavaArrayData
+{
+    const int DATA_LENGTH = 5; // 要素数
+    // ステージクリア配列、実績配列
+    public bool[] stageClear = new bool[DATA_LENGTH], stageAchievement = new bool[DATA_LENGTH];
 }
