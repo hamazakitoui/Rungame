@@ -33,7 +33,6 @@ public class SelectDirector : MonoBehaviour
                 if (data.GetStageClear(s - 1)) StartCoroutine(SceneActive(scenes[s], s));
                 else scenes[s].SetActive(false); // 非表示
             }
-            Debug.Log(data.GetStageClear(s));
         }
     }
     /// <summary> セレクトボタン出現イベント </summary>

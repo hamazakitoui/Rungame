@@ -108,9 +108,9 @@ public struct SaveData
     // ステージ数
     private const int STAGE_LENGTH = 5;
     // ステージクリア配列
-    private bool stageClear1, stageClear2, stageClear3, stageClear4, stageClear5;
+    public bool stageClear1, stageClear2, stageClear3, stageClear4, stageClear5;
     // 実績配列
-    private bool stageAchievement1, stageAchievement2, stageAchievement3, stageAchievement4,
+    public bool stageAchievement1, stageAchievement2, stageAchievement3, stageAchievement4,
         stageAchievement5;
     public int Score; // スコア
     /// <summary> コンストラクタ </summary>
