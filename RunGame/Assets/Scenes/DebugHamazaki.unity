@@ -302,37 +302,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: DashWind
       objectReference: {fileID: 0}
-    - target: {fileID: 7647520135642411342, guid: f11cbacf0830c70439e4c5ee850e8c08, type: 3}
-      propertyPath: ShapeModule.angle
-      value: 2.17
-      objectReference: {fileID: 0}
-    - target: {fileID: 7647520135642411342, guid: f11cbacf0830c70439e4c5ee850e8c08, type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 7647520135642411342, guid: f11cbacf0830c70439e4c5ee850e8c08, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.a
-      value: 0.6039216
-      objectReference: {fileID: 0}
-    - target: {fileID: 7647520135642411342, guid: f11cbacf0830c70439e4c5ee850e8c08, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.4980155
-      objectReference: {fileID: 0}
-    - target: {fileID: 7647520135642411342, guid: f11cbacf0830c70439e4c5ee850e8c08, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.6509804
-      objectReference: {fileID: 0}
-    - target: {fileID: 7647520135642411342, guid: f11cbacf0830c70439e4c5ee850e8c08, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.2901961
-      objectReference: {fileID: 0}
     - target: {fileID: 7647520135642411345, guid: f11cbacf0830c70439e4c5ee850e8c08, type: 3}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7647520135642411345, guid: f11cbacf0830c70439e4c5ee850e8c08, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.18
       objectReference: {fileID: 0}
     - target: {fileID: 7647520135642411345, guid: f11cbacf0830c70439e4c5ee850e8c08, type: 3}
       propertyPath: m_LocalPosition.x
