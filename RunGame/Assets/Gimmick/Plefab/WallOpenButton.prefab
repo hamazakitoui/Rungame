@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 39929d9696062024380cfed39be8f845, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d189a2746ec023142907faeebb5d4cab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallManager: {fileID: 0}
+  ONSwitchImage: {fileID: 21300000, guid: efd6d38d8863dcf45930e4b27763b9e5, type: 3}
 --- !u!61 &9117625733542091239
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     new AudioSource audio;      // 音声コンポーネント
 
     ParticleSystem dustCloudEffect; // 土煙エフェクト
+    PlayerAfterimage afterimage;    // 残像エフェクト
 
     bool isJump = false;        // ジャンプフラグ
     bool isGround = false;      // 接地フラグ
@@ -55,6 +56,8 @@ public class PlayerController : MonoBehaviour
         audio = GetComponent<AudioSource>();
         // エフェクトを取得
         dustCloudEffect = transform.GetChild(0).gameObject.GetComponent<ParticleSystem>();
+        // スクリプトを取得
+        afterimage = transform.GetChild(1).gameObject.GetComponent<PlayerAfterimage>();
 
         isMove = true;
     }
@@ -93,6 +96,13 @@ public class PlayerController : MonoBehaviour
         // 接地しており、ジャンプ中でなければ、ジャンプの回数をリセットする
         if (isGround && !isJump) { jumpCount = 0; }
 
+        // 地面に接地していないならばエフェクトを非表示にする、
+        if (!isGround) { dustCloudEffect.Stop(false); }
+
+        // 接地してなくジャンプ中でないならば落下モーションに変更、接地しているならば走るモーションに変更にする
+        if (!isGround && !isJump) { anime.SetBool("isJumpDown", true); }
+        else anime.SetBool("isJumpDown", false);
+
         // 条件が一致するならばジャンプをする
         if (isJump) { Jump(); }
 
@@ -125,7 +135,7 @@ public class PlayerController : MonoBehaviour
         // 座標に速度を入れる
         transform.position += new Vector3(runSpeed * mag, 0f, 0f);
         // 加速経過時間が最大継続時間を超えたら加速を終える
-        if (speedUpTime <= 0) { isSpeedUp = false; }
+        if (speedUpTime <= 0) { isSpeedUp = false; afterimage.EndGenerator(); }
     }
     // ジャンプの処理
     void Jump()
@@ -133,8 +143,6 @@ public class PlayerController : MonoBehaviour
         // アニメーターのフラグを変更する
         anime.SetBool("isJump", true);
 
-        // エフェクトを非表示
-        dustCloudEffect.Stop(false);
         // 重力を0にする
         rigidbody.velocity = Vector3.zero;
 
@@ -150,6 +158,8 @@ public class PlayerController : MonoBehaviour
             isJump = false;
             isJumpRamp = false;
             anime.SetBool("isJump", false);
+            // スピードアップ中でなければジャンプ台によるジャンプの残像の生成を切る
+            if(!isSpeedUp) afterimage.EndGenerator();
         }
         else
         {
@@ -263,10 +273,12 @@ public class PlayerController : MonoBehaviour
                     // 音データがあるかをチェック
                     if (seData.GetScoreSE != null)
                     {
-                        // 死亡効果音を鳴らす
+                        // スコア入手効果音を鳴らす
                         audio.clip = seData.GetScoreSE;
                         audio.Play();
                     }
+                    // 接触したアイテムを削除
+                    Destroy(collision.gameObject);
                     break;
                 case _ItemKinds.Collectibles:
                     // UIに反映する
@@ -278,35 +290,41 @@ public class PlayerController : MonoBehaviour
                         audio.clip = seData.GetCollectiblesSE;
                         audio.Play();
                     }
+                    // 接触したアイテムを削除
+                    Destroy(collision.gameObject);
                     break;
                 case _ItemKinds.Accelerator:
                     // 一定時間加速する
                     isSpeedUp = true;
                     speedUpTime = (int)collision.gameObject.GetComponent<ItemData>().GetValue;
+                    // 残像を生成する
+                    afterimage.StartGenerator(transform, GetComponent<SpriteRenderer>());
                     // 音データがあるかをチェック
                     if (seData.GetAcceleratorSE != null)
                     {
-                        // 死亡効果音を鳴らす
+                        // 加速効果音を鳴らす
                         audio.clip = seData.GetAcceleratorSE;
                         audio.Play();
                     }
+                    // 接触したアイテムを削除
+                    Destroy(collision.gameObject);
                     break;
                 case _ItemKinds.JumpRamp:
                     // 即時ジャンプする
                     jumpSpeed = collision.gameObject.GetComponent<ItemData>().GetValue;
                     isJumpRamp = true;
                     isJump = true;
+                    // 残像を生成する
+                    afterimage.StartGenerator(transform, GetComponent<SpriteRenderer>());
                     // 音データがあるかをチェック
                     if (seData.GetJumpRampSE != null)
                     {
-                        // 死亡効果音を鳴らす
+                        // ジャンプ台効果音を鳴らす
                         audio.clip = seData.GetJumpRampSE;
                         audio.Play();
                     }
                     break;
             }
-            // 接触したアイテムを削除
-            Destroy(collision.gameObject);
         }
 
         // 敵と接触したかの判定

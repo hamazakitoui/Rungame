@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7b975c09407b3cf468ddcb9caf1f8bae
+guid: 62bda00b664a0bc4798960e263299298
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,22 +116,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: door_0
+      name: Erina_JumpDown_1_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 0
-        width: 32
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 12
+        y: 10
+        width: 34
+        height: 39
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84d416601c0d99143a9bc99fcbcacd5c
-      internalID: 412410178
+      spriteID: 50327487b59eb304798c469e92bef2a5
+      internalID: -907054296
       vertices: []
       indices: 
       edges: []
@@ -147,7 +147,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      door_0: 412410178
+      Erina_JumpDown_1_0: -907054296
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
