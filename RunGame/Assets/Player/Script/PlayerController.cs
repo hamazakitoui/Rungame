@@ -277,6 +277,8 @@ public class PlayerController : MonoBehaviour
                         audio.clip = seData.GetScoreSE;
                         audio.Play();
                     }
+                    // 接触したアイテムを削除
+                    Destroy(collision.gameObject);
                     break;
                 case _ItemKinds.Collectibles:
                     // UIに反映する
@@ -288,6 +290,8 @@ public class PlayerController : MonoBehaviour
                         audio.clip = seData.GetCollectiblesSE;
                         audio.Play();
                     }
+                    // 接触したアイテムを削除
+                    Destroy(collision.gameObject);
                     break;
                 case _ItemKinds.Accelerator:
                     // 一定時間加速する
@@ -302,6 +306,8 @@ public class PlayerController : MonoBehaviour
                         audio.clip = seData.GetAcceleratorSE;
                         audio.Play();
                     }
+                    // 接触したアイテムを削除
+                    Destroy(collision.gameObject);
                     break;
                 case _ItemKinds.JumpRamp:
                     // 即時ジャンプする
@@ -319,8 +325,6 @@ public class PlayerController : MonoBehaviour
                     }
                     break;
             }
-            // 接触したアイテムを削除
-            Destroy(collision.gameObject);
         }
 
         // 敵と接触したかの判定
