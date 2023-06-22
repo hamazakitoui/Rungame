@@ -277,8 +277,6 @@ public class AudioManager : MonoBehaviour
             Debug.LogError(string.Format($"{bgmName}が見つかりません"));
             return;
         }
-        // 既に指定されたBGMが再生していたら処理しない
-        if ((CurrentBGM_Audio != null) && (CurrentBGM_Audio.clip == BgmClipDict[bgmName])) return;
         // フェード中なら停止
         StopBgmFadeOut();
         StopBgmFadeIn();
