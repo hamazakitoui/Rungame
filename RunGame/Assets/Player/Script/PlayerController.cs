@@ -96,6 +96,13 @@ public class PlayerController : MonoBehaviour
         // 接地しており、ジャンプ中でなければ、ジャンプの回数をリセットする
         if (isGround && !isJump) { jumpCount = 0; }
 
+        // 地面に接地していないならばエフェクトを非表示にする、
+        if (!isGround) { dustCloudEffect.Stop(false); }
+
+        // 接地してなくジャンプ中でないならば落下モーションに変更、接地しているならば走るモーションに変更にする
+        if (!isGround && !isJump) { anime.SetBool("isJumpDown", true); }
+        else anime.SetBool("isJumpDown", false);
+
         // 条件が一致するならばジャンプをする
         if (isJump) { Jump(); }
 
@@ -136,8 +143,6 @@ public class PlayerController : MonoBehaviour
         // アニメーターのフラグを変更する
         anime.SetBool("isJump", true);
 
-        // エフェクトを非表示
-        dustCloudEffect.Stop(false);
         // 重力を0にする
         rigidbody.velocity = Vector3.zero;
 
