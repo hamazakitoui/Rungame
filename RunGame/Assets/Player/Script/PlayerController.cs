@@ -158,6 +158,8 @@ public class PlayerController : MonoBehaviour
             isJump = false;
             isJumpRamp = false;
             anime.SetBool("isJump", false);
+            // スピードアップ中でなければジャンプ台によるジャンプの残像の生成を切る
+            if(!isSpeedUp) afterimage.EndGenerator();
         }
         else
         {
@@ -291,6 +293,7 @@ public class PlayerController : MonoBehaviour
                     // 一定時間加速する
                     isSpeedUp = true;
                     speedUpTime = (int)collision.gameObject.GetComponent<ItemData>().GetValue;
+                    // 残像を生成する
                     afterimage.StartGenerator(transform, GetComponent<SpriteRenderer>());
                     // 音データがあるかをチェック
                     if (seData.GetAcceleratorSE != null)
@@ -305,6 +308,8 @@ public class PlayerController : MonoBehaviour
                     jumpSpeed = collision.gameObject.GetComponent<ItemData>().GetValue;
                     isJumpRamp = true;
                     isJump = true;
+                    // 残像を生成する
+                    afterimage.StartGenerator(transform, GetComponent<SpriteRenderer>());
                     // 音データがあるかをチェック
                     if (seData.GetJumpRampSE != null)
                     {
