@@ -223,7 +223,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &881649784
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -302,6 +302,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sparksObject
       objectReference: {fileID: 0}
+    - target: {fileID: 1147255039583946276, guid: b2d9c2730bafb78449f7f72a195316df, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7200250123274726401, guid: b2d9c2730bafb78449f7f72a195316df, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -348,6 +352,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2d9c2730bafb78449f7f72a195316df, type: 3}
+--- !u!1001 &6111711739887672925
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1516126548882568511, guid: 972c9541c73fa3046ba85949148cc79d, type: 3}
+      propertyPath: m_Name
+      value: lavafall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266792281399781335, guid: 972c9541c73fa3046ba85949148cc79d, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266792281399781335, guid: 972c9541c73fa3046ba85949148cc79d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.434638
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266792281399781335, guid: 972c9541c73fa3046ba85949148cc79d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266792281399781335, guid: 972c9541c73fa3046ba85949148cc79d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.3273706
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266792281399781335, guid: 972c9541c73fa3046ba85949148cc79d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266792281399781335, guid: 972c9541c73fa3046ba85949148cc79d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266792281399781335, guid: 972c9541c73fa3046ba85949148cc79d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266792281399781335, guid: 972c9541c73fa3046ba85949148cc79d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266792281399781335, guid: 972c9541c73fa3046ba85949148cc79d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266792281399781335, guid: 972c9541c73fa3046ba85949148cc79d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266792281399781335, guid: 972c9541c73fa3046ba85949148cc79d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 972c9541c73fa3046ba85949148cc79d, type: 3}
 --- !u!1001 &7647520136945112321
 PrefabInstance:
   m_ObjectHideFlags: 0
