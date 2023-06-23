@@ -31,6 +31,18 @@ public class GoalPoint : MonoBehaviour
         FadeSceneManager.Instance.LoadScene(selectScene); // セレクトシーンに移動
         isClear = true;
     }
+    /// <summary> 最高スコア保存 </summary>
+    /// <param name="score">スコア</param>
+    public void SaveScore(int score)
+    {
+        SaveData data = SaveManager.Instance.GetData; // セーブデータ
+        // ハイスコアを更新したら
+        if (data.Score < score)
+        {
+            data.Score = score;
+            SaveManager.Instance.Save(data); // セーブ
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == playerTag) GameClear(); // プレイヤーに当たったらクリア
