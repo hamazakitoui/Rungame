@@ -4824,7 +4824,7 @@ GameObject:
   - component: {fileID: 2415555531095724862}
   - component: {fileID: 2415555531095724861}
   m_Layer: 0
-  m_Name: bom
+  m_Name: firework
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
