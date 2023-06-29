@@ -303,7 +303,39 @@ PrefabInstance:
       value: firework
       objectReference: {fileID: 0}
     - target: {fileID: 2415555531095724862, guid: 391871f6606fa2e429451136a37f4199, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415555531095724862, guid: 391871f6606fa2e429451136a37f4199, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 6.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415555531095724862, guid: 391871f6606fa2e429451136a37f4199, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 5.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415555531095724862, guid: 391871f6606fa2e429451136a37f4199, type: 3}
       propertyPath: ShapeModule.radiusThickness
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415555531095724862, guid: 391871f6606fa2e429451136a37f4199, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415555531095724862, guid: 391871f6606fa2e429451136a37f4199, type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415555531095724862, guid: 391871f6606fa2e429451136a37f4199, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].cycleCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415555531095724862, guid: 391871f6606fa2e429451136a37f4199, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415555531095724862, guid: 391871f6606fa2e429451136a37f4199, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minMaxState
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2415555531095724863, guid: 391871f6606fa2e429451136a37f4199, type: 3}
@@ -316,7 +348,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2415555531095724863, guid: 391871f6606fa2e429451136a37f4199, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -5.02
       objectReference: {fileID: 0}
     - target: {fileID: 2415555531095724863, guid: 391871f6606fa2e429451136a37f4199, type: 3}
       propertyPath: m_LocalPosition.z
@@ -348,6 +380,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2415555531095724863, guid: 391871f6606fa2e429451136a37f4199, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415555531503056532, guid: 391871f6606fa2e429451136a37f4199, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415555531503056532, guid: 391871f6606fa2e429451136a37f4199, type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415555531570374615, guid: 391871f6606fa2e429451136a37f4199, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415555531570374615, guid: 391871f6606fa2e429451136a37f4199, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415555531570374615, guid: 391871f6606fa2e429451136a37f4199, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415555531570374615, guid: 391871f6606fa2e429451136a37f4199, type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415555531570374615, guid: 391871f6606fa2e429451136a37f4199, type: 3}
+      propertyPath: EmissionModule.rateOverDistance.scalar
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
