@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ResultUIManager : MonoBehaviour
 {
-
+    [SerializeField] SaveManager save;
 
 
     void Start()
@@ -12,7 +12,10 @@ public class ResultUIManager : MonoBehaviour
         
     }
 
+    public void ResultProcess()
+    {
 
+    }
 
 
 
