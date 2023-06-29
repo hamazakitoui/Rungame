@@ -9,15 +9,34 @@ public class GoalPoint : MonoBehaviour
     readonly string playerTag = "Player";
     private bool isClear = false; // クリアフラグ
     [Header("ステージ番号")] [SerializeField] private int stageNum;
+    [Header("結果表示時間")] [SerializeField] private float clearWait = 3.0f;
     [Header("セレクトシーン")] [SerializeField] private SceneObject selectScene;
-    /// <summary> ゴール </summary>
-    public void GameClear()
+    /// <summary> クリアコルーチン </summary>
+    /// <returns></returns>
+    private IEnumerator ClearFade()
     {
-        if (isClear) return; // 一回だけ実行
+        yield return new WaitForSeconds(clearWait); // 一定時間待機
         SaveData data = SaveManager.Instance.GetData; // セーブデータ
         data.SetStageClear(stageNum, true); // クリアに変更
         SaveManager.Instance.Save(data); // セーブ
         FadeSceneManager.Instance.LoadScene(selectScene); // セレクトシーンに移動
+    }
+    /// <summary> クリアコルーチン </summary>
+    /// <param name="stageNum">ステージ番号</param>
+    /// <returns></returns>
+    private IEnumerator ClearFade(int stageNum)
+    {
+        yield return new WaitForSeconds(clearWait); // 一定時間待機
+        SaveData data = SaveManager.Instance.GetData; // セーブデータ
+        data.SetStageClear(stageNum, true); // クリアに変更
+        SaveManager.Instance.Save(data); // セーブ
+        FadeSceneManager.Instance.LoadScene(selectScene); // セレクトシーンに移動
+    }
+    /// <summary> ゴール </summary>
+    public void GameClear()
+    {
+        if (isClear) return; // 一回だけ実行
+        StartCoroutine(ClearFade()); // クリア
         isClear = true;
     }
     /// <summary> ゴール </summary>
@@ -25,10 +44,7 @@ public class GoalPoint : MonoBehaviour
     public void GameClear(int stageNum)
     {
         if (isClear) return; // 一回だけ実行
-        SaveData data = SaveManager.Instance.GetData; // セーブデータ
-        data.SetStageClear(stageNum, true); // クリアに変更
-        SaveManager.Instance.Save(data); // セーブ
-        FadeSceneManager.Instance.LoadScene(selectScene); // セレクトシーンに移動
+        StartCoroutine(ClearFade(stageNum)); // クリア
         isClear = true;
     }
     /// <summary> 最高スコア保存 </summary>
