@@ -302,6 +302,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: firework
       objectReference: {fileID: 0}
+    - target: {fileID: 2415555531095724862, guid: 391871f6606fa2e429451136a37f4199, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2415555531095724863, guid: 391871f6606fa2e429451136a37f4199, type: 3}
       propertyPath: m_RootOrder
       value: 6
