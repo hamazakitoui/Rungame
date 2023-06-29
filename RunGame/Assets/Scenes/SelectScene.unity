@@ -372,7 +372,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: bc6ed182764a6e5448887e8fb4ddd5d7, type: 3}
+    m_Font: {fileID: 12800000, guid: 43959a9ea02096e4b93ab7f78607ab6d, type: 3}
     m_FontSize: 23
     m_FontStyle: 0
     m_BestFit: 0
@@ -384,7 +384,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u58F1"
+  m_Text: 1
 --- !u!222 &395072333
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -467,7 +467,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: bc6ed182764a6e5448887e8fb4ddd5d7, type: 3}
+    m_Font: {fileID: 12800000, guid: 43959a9ea02096e4b93ab7f78607ab6d, type: 3}
     m_FontSize: 23
     m_FontStyle: 0
     m_BestFit: 0
@@ -479,7 +479,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5F10"
+  m_Text: 2
 --- !u!222 &408993889
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1364,7 +1364,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: bc6ed182764a6e5448887e8fb4ddd5d7, type: 3}
+    m_Font: {fileID: 12800000, guid: 43959a9ea02096e4b93ab7f78607ab6d, type: 3}
     m_FontSize: 23
     m_FontStyle: 0
     m_BestFit: 0
@@ -1376,7 +1376,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u56DB"
+  m_Text: 4
 --- !u!222 &1225135405
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1706,7 +1706,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: bc6ed182764a6e5448887e8fb4ddd5d7, type: 3}
+    m_Font: {fileID: 12800000, guid: 43959a9ea02096e4b93ab7f78607ab6d, type: 3}
     m_FontSize: 23
     m_FontStyle: 0
     m_BestFit: 0
@@ -1718,7 +1718,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u4F0D"
+  m_Text: 5
 --- !u!222 &1612138238
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1935,7 +1935,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: bc6ed182764a6e5448887e8fb4ddd5d7, type: 3}
+    m_Font: {fileID: 12800000, guid: 43959a9ea02096e4b93ab7f78607ab6d, type: 3}
     m_FontSize: 23
     m_FontStyle: 0
     m_BestFit: 0
@@ -1947,7 +1947,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u53C2"
+  m_Text: 3
 --- !u!222 &1883548673
 CanvasRenderer:
   m_ObjectHideFlags: 0
