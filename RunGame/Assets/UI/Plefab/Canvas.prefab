@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectiblesImageUI: {fileID: 3273949877252522652, guid: 0dcf9d424fe1e204c947750c84229e58, type: 3}
-  collectiblesSprite: {fileID: -1276140943, guid: a0dbba89ee82a8d44950e0b82e406452, type: 3}
+  collectiblesSprite: {fileID: 21300000, guid: a0dbba89ee82a8d44950e0b82e406452, type: 3}
   collectiblesValue: 3
 --- !u!1 &2452464457427086704
 GameObject:
@@ -411,7 +411,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c5fc6e89d2bc9054c8492e9aaaf43a50, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5aaaabf107dcf7f44bb83c1faac028eb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
