@@ -11,8 +11,8 @@ public class GameOverManager : MonoBehaviour
     bool isControl = false;     // 処理を行うかのフラグ
 
     const int MAXNUMBER = 1;    // 最大処理番号
-    const float RETRY_Y = 9.0f;  // リトライのｙ座標
-    const float EXIT_Y = -69.0f; // ステージを出る選択のｙ座標
+    const float RETRY_Y = -94f; // リトライのｙ座標
+    const float EXIT_Y = -195f; // ステージを出る選択のｙ座標
 
     enum ProcessNumber
     {
