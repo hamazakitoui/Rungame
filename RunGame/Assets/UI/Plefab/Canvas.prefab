@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectiblesImageUI: {fileID: 3273949877252522652, guid: 0dcf9d424fe1e204c947750c84229e58, type: 3}
-  collectiblesSprite: {fileID: -1276140943, guid: a0dbba89ee82a8d44950e0b82e406452, type: 3}
+  collectiblesSprite: {fileID: 21300000, guid: a0dbba89ee82a8d44950e0b82e406452, type: 3}
   collectiblesValue: 3
 --- !u!1 &2452464457427086704
 GameObject:
