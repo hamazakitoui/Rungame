@@ -5,8 +5,6 @@ using UnityEngine;
 /// <summary> ゴールポイント </summary>
 public class GoalPoint : MonoBehaviour
 {
-    // オブジェクトタグ
-    readonly string playerTag = "Player";
     private bool isClear = false; // クリアフラグ
     [Header("ステージ番号")] [SerializeField] private int stageNum;
     [Header("結果表示時間")] [SerializeField] private float clearWait = 3.0f;
