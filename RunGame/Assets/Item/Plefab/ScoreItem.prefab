@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemKinds: 0
-  value: 100
+  value: 250
 --- !u!61 &1830506803297695240
 BoxCollider2D:
   m_ObjectHideFlags: 0
