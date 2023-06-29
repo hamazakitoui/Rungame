@@ -15,7 +15,6 @@ public class SaveManager : MonoBehaviour
     private const string SAVE_FILE_PATH = "SaveData.json", ENCODE_CODE = "UTF-8";
     private SaveData data; // セーブデータ
     private static SaveManager instance; // インスタンス保存用変数
-    [SerializeField] private int stageSum = 1; // ステージ総数
     /// <summary> シングルトン </summary>
     public static SaveManager Instance
     {
@@ -40,7 +39,7 @@ public class SaveManager : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(this.gameObject);
-        data = new SaveData(stageSum); // セーブデータ初期化
+        data = new SaveData(0); // セーブデータ初期化
     }
     /// <summary> セーブ </summary>
     public void Save()
@@ -106,53 +105,142 @@ public class SaveManager : MonoBehaviour
 [Serializable]
 public struct SaveData
 {
-    // ステージクリア配列、実績配列
-    private bool[] stageClear, stageAchievement;
+    // ステージ数
+    private const int STAGE_LENGTH = 5;
+    // ステージクリア配列
+    public bool stageClear1, stageClear2, stageClear3, stageClear4, stageClear5;
+    // 実績配列
+    public bool stageAchievement1, stageAchievement2, stageAchievement3, stageAchievement4,
+        stageAchievement5;
     public int Score; // スコア
     /// <summary> コンストラクタ </summary>
     /// <param name="num">ステージ数</param>
     public SaveData(int num)
     {
-        Score = 0; // スコア初期化
-        stageClear = new bool[num]; // クリア状況初期化
-        stageAchievement = new bool[num]; // 実績初期化
-        // 要素初期化
-        for (int i = 0; i < num; i++)
-        {
-            stageClear[i] = false;
-            stageAchievement[i] = false;
-        }
+        Score = num; // スコア初期化
+        // クリア状況初期化
+        stageClear1 = false;
+        stageClear2 = false;
+        stageClear3 = false;
+        stageClear4 = false;
+        stageClear5 = false;
+        // 実績初期化
+        stageAchievement1 = false;
+        stageAchievement2 = false;
+        stageAchievement3 = false;
+        stageAchievement4 = false;
+        stageAchievement5 = false;
     }
     /// <summary> クリア状況設定 </summary>
     /// <param name="element">ステージ番号</param> <param name="value">設定する要素</param>
     public void SetStageClear(int element, bool value)
     {
-        if (element >= stageClear.Length) return; // 要素数超えていたら無視
-        stageClear[element] = value;
+        if (element >= STAGE_LENGTH) return; // 要素数超えていたら無視
+        switch (element)
+        {
+            case 0:
+                stageClear1 = value;
+                break;
+            case 1:
+                stageClear2 = value;
+                break;
+            case 2:
+                stageClear3 = value;
+                break;
+            case 3:
+                stageClear4 = value;
+                break;
+            case 4:
+                stageClear5 = value;
+                break;
+            default:
+                break;
+        }
     }
     /// <summary> 実績設定 </summary>
     /// <param name="element">ステージ番号</param> <param name="value">設定する要素</param>
     public void SetAchievement(int element, bool value)
     {
-        if (element >= stageAchievement.Length) return; // 要素数超えていたら無視
-        stageAchievement[element] = value;
+        if (element >= STAGE_LENGTH) return; // 要素数超えていたら無視
+        switch (element)
+        {
+            case 0:
+                stageAchievement1 = value;
+                break;
+            case 1:
+                stageAchievement2 = value;
+                break;
+            case 2:
+                stageAchievement3 = value;
+                break;
+            case 3:
+                stageAchievement4 = value;
+                break;
+            case 4:
+                stageAchievement5 = value;
+                break;
+            default:
+                break;
+        }
     }
     /// <summary> クリア状況取得 </summary>
     /// <param name="element">ステージ番号</param>
     /// <returns>ステージのクリア状況</returns>
     public bool GetStageClear(int element)
     {
-        if (element >= stageClear.Length) return false; // 要素数を超えたらFalseを必ず返す
-        return stageClear[element];
+        if (element >= STAGE_LENGTH) return false; // 要素数を超えたらFalseを必ず返す
+        bool result = false;
+        switch (element)
+        {
+            case 0:
+                result = stageClear1;
+                break;
+            case 1:
+                result = stageClear2;
+                break;
+            case 2:
+                result = stageClear3;
+                break;
+            case 3:
+                result = stageClear4;
+                break;
+            case 4:
+                result = stageClear5;
+                break;
+            default:
+                break;
+        }
+        return result;
     }
     /// <summary> 実績取得 </summary>
     /// <param name="element">ステージ番号</param>
     /// <returns>ステージの実績</returns>
     public bool GetAchievement(int element)
     {
-        if (element >= stageAchievement.Length) return false; // 要素数を超えたらFalseを必ず返す
-        return stageAchievement[element];
+        if (element >= STAGE_LENGTH) return false; // 要素数を超えたらFalseを必ず返す
+        bool result = false;
+        switch (element)
+        {
+            case 0:
+                result = stageAchievement1;
+                break;
+            case 1:
+                result = stageAchievement2;
+                break;
+            case 2:
+                result = stageAchievement3;
+                break;
+            case 3:
+                result = stageAchievement4;
+                break;
+            case 4:
+                result = stageAchievement5;
+                break;
+            default:
+                break;
+        }
+        return result;
     }
     /// <summary> ステージ数 </summary>
-    public int StageLength { get { return stageClear.Length; } }
+    public int StageLength { get { return STAGE_LENGTH; } }
 }

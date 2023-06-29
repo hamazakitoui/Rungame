@@ -12,6 +12,7 @@ public class TitleManager : MonoBehaviour
     void Start()
     {
         if (bgm != null && bgm != "") AudioManager.Instance.PlayBGM(bgm); // BGMÄ¶
+        SaveManager.Instance.Load(); // “Ç‚İ‚İ
     }
 
     // Update is called once per frame

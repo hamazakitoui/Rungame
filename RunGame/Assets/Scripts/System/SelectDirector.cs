@@ -8,12 +8,14 @@ public class SelectDirector : MonoBehaviour
     // 待機時間
     private const float APP_WAIT = 0.2f;
     private bool isSelect = false; // 選択判定
+    [SerializeField] AudioObject bgm; // BGM
     [SerializeField] GameObject[] scenes; // 選択シーン配列
     [SerializeField] SceneObject[] selectScenes; // 選択可能シーン配列
     // Start is called before the first frame update
     void Start()
     {
-        SaveManager.Instance.Load(); // セーブデータ読み込み
+        if (bgm != null && bgm != "") AudioManager.Instance.PlayBGM(bgm); // BGM再生
+        SaveManager.Instance.Load(); // 読み込み
         SaveData data = SaveManager.Instance.GetData; // ステージデータ
         // 選択できるシーンを初期化
         for(int s = 0; s < scenes.Length; s++)

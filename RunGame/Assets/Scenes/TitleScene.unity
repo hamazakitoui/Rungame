@@ -587,6 +587,7 @@ GameObject:
   - component: {fileID: 1121221564}
   - component: {fileID: 1121221563}
   - component: {fileID: 1121221562}
+  - component: {fileID: 1121221565}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -661,6 +662,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1121221565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121221561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &1159522730
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,7 +761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.44716978, g: 0.6419167, b: 1, a: 1}
+  m_Color: {r: 0.8962264, g: 0.50493616, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -905,6 +939,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectScene:
     sceneName: SelectScene
+  bgm:
+    audioName: "\u30BF\u30A4\u30C8\u30EB\u3068\u30BB\u30EC\u30AF\u30C8BGM"
 --- !u!1 &1516014844
 GameObject:
   m_ObjectHideFlags: 0
@@ -978,7 +1014,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7239e61f174ce1043a32d68ddae576f8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0a03cf1f6e0abea43bc83e72c63362bc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1075,7 +1111,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30C8\u30E9\u30D9\u30EB<color=#ffff00>\u30E9\u30F3\u30CA\u30FC</color>"
+  m_Text: "\u30C8\u30E9\u30D9\u30EB<color=#00a0f0>\u30E9\u30F3\u30CA\u30FC</color>"
 --- !u!222 &1758329155
 CanvasRenderer:
   m_ObjectHideFlags: 0
