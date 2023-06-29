@@ -112,12 +112,18 @@ public struct SaveData
     // 実績配列
     public bool stageAchievement1, stageAchievement2, stageAchievement3, stageAchievement4,
         stageAchievement5;
-    public int Score; // スコア
+    // スコア
+    public int Score1, Score2, Score3, Score4, Score5;
     /// <summary> コンストラクタ </summary>
     /// <param name="num">ステージ数</param>
     public SaveData(int num)
     {
-        Score = num; // スコア初期化
+        // スコア初期化
+        Score1 = num;
+        Score2 = num;
+        Score3 = num;
+        Score4 = num;
+        Score5 = num;
         // クリア状況初期化
         stageClear1 = false;
         stageClear2 = false;
@@ -182,6 +188,62 @@ public struct SaveData
             default:
                 break;
         }
+    }
+    /// <summary> スコア保存 </summary>
+    /// <param name="element">ステージ番号</param>
+    /// <param name="value">保存する値</param>
+    public void SetScore(int element,int value)
+    {
+        if (element >= STAGE_LENGTH) return; // 要素数超えていたら無視
+        switch (element)
+        {
+            case 0:
+                Score1 = value;
+                break;
+            case 1:
+                Score2 = value;
+                break;
+            case 2:
+                Score3 = value;
+                break;
+            case 3:
+                Score4 = value;
+                break;
+            case 4:
+                Score5 = value;
+                break;
+            default:
+                break;
+        }
+    }
+    /// <summary> ステージごとのスコア </summary>
+    /// <param name="element">ステージ番号</param>
+    /// <returns>保存されているスコア</returns>
+    public int GetStageScore(int element)
+    {
+        if (element >= STAGE_LENGTH) return 0; // 要素数を超えたらFalseを必ず返す
+        int result = 0;
+        switch (element)
+        {
+            case 0:
+                result = Score1;
+                break;
+            case 1:
+                result = Score2;
+                break;
+            case 2:
+                result = Score3;
+                break;
+            case 3:
+                result = Score4;
+                break;
+            case 4:
+                result = Score5;
+                break;
+            default:
+                break;
+        }
+        return result;
     }
     /// <summary> クリア状況取得 </summary>
     /// <param name="element">ステージ番号</param>
