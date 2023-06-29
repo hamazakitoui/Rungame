@@ -89,6 +89,10 @@ public class GameOverManager : MonoBehaviour
         this.gameObject.SetActive(true);
         // アニメーションさせる
         GetComponent<Animator>().SetBool("isMove", true);
+    }
+
+    public void isProcess()
+    {
         // 処理を行うようにフラグを入れる
         isControl = true;
     }
