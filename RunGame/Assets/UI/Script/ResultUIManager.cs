@@ -8,6 +8,7 @@ public class ResultUIManager : MonoBehaviour
     [SerializeField] GameObject collectibles;
     [SerializeField] GameObject scoreMane;
     [SerializeField] RectTransform selectImage;        // 選択アイコン
+    [SerializeField] int stageNumber = 0;              // ステージ番号
 
     int number = 0;             // 処理番号
 
@@ -59,7 +60,16 @@ public class ResultUIManager : MonoBehaviour
         // セーブを行う
         // セーブマネージャーを探す
         SaveManager save = GameObject.Find("SavaManager").GetComponent<SaveManager>();
-
+        // セーブデータの作成
+        SaveData saveData = save.GetData;
+        // スコアの書き込み
+        saveData.SetScore(stageNumber, score);
+        // コレクトアイテムの書き込み
+        for (int i = 0; i < collect.Length; i++)
+        {
+            saveData.SetAchievement(stageNumber, i, collect[i]);
+        }
+        // セーブファイルに書き込み
         save.Save();
 
         // 入力処理
