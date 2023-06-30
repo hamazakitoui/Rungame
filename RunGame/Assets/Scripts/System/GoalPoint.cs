@@ -5,6 +5,8 @@ using UnityEngine;
 /// <summary> ゴールポイント </summary>
 public class GoalPoint : MonoBehaviour
 {
+    // タグ
+    private readonly string playerTag = "Player";
     private bool isClear = false; // クリアフラグ
     [Header("ステージ番号")] [SerializeField] private int stageNum;
     [Header("結果表示時間")] [SerializeField] private float clearWait = 3.0f;
@@ -47,5 +49,10 @@ public class GoalPoint : MonoBehaviour
             data.SetScore(stageNum, score);
             SaveManager.Instance.Save(data); // セーブ
         }
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        // プレイヤーに当たったら
+        if (collision.tag == playerTag) ResultUIManager.Instance.ResultProcess(); // 結果を保存
     }
 }
