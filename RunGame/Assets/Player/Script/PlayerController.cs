@@ -340,8 +340,8 @@ public class PlayerController : MonoBehaviour
         {
             // 接触しているならばクリアフラグを立てる
             collision.gameObject.GetComponent<GoalPoint>().GameClear();
-            isMove = false;
             anime.SetBool("isClear", true);
+            isMove = false;
 
             // エフェクトを非表示
             dustCloudEffect.Stop(false);
