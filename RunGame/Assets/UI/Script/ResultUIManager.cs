@@ -10,6 +10,8 @@ public class ResultUIManager : MonoBehaviour
     [SerializeField] RectTransform selectImage;        // 選択アイコン
     [SerializeField] int stageNumber = 0;              // ステージ番号
 
+    private static ResultUIManager instance; // インスタンス保存用変数
+
     int number = 0;             // 処理番号
 
     float retryPos_x = -204f;
@@ -20,6 +22,21 @@ public class ResultUIManager : MonoBehaviour
     {
         RETRY,
         NEXT,
+    }
+
+    public static ResultUIManager Instance
+    {
+        get
+        {
+            // インスタンスが設定されていなければ
+            if (instance == null)
+            {
+                instance = FindObjectOfType<ResultUIManager>(); // インスタンス検索
+                // エラー処理
+                if (instance == null) Debug.LogError($"{typeof(ResultUIManager)}が見つかりません!");
+            }
+            return instance;
+        }
     }
 
     public void ResultProcess()
@@ -94,23 +111,21 @@ public class ResultUIManager : MonoBehaviour
             // 決定キーが押された時、シーン推移を行う
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
             {
-                // フェードマネージャーを探す
-                FadeSceneManager fade = GameObject.Find("FadeManager").GetComponent<FadeSceneManager>();
                 // 番号ごとに処理を行う
                 switch (number)
                 {
                     // 現在のシーンを読み込みなおす
                     case (int)ProcessNumber.RETRY:
-                        fade.LoadScene(SceneManager.GetActiveScene().name);
+                        FadeSceneManager.Instance.LoadScene(SceneManager.GetActiveScene().name);
                         break;
                     // セレクトシーンを読み込む
                     case (int)ProcessNumber.NEXT:
-                        fade.LoadScene("SelectScene");
+                        FadeSceneManager.Instance.LoadScene("SelectScene");
                         break;
                     // 当てはまらない数値が検出された場合、エラー文を出してセレクトシーンに戻す
                     default:
                         Debug.LogError("当てはまらない数値が検出されました！");
-                        fade.LoadScene("SelectScene");
+                        FadeSceneManager.Instance.LoadScene("SelectScene");
                         break;
                 }
             }
