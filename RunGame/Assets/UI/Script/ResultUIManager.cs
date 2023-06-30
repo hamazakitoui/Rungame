@@ -58,10 +58,8 @@ public class ResultUIManager : MonoBehaviour
 
 
         // セーブを行う
-        // セーブマネージャーを探す
-        SaveManager save = GameObject.Find("SavaManager").GetComponent<SaveManager>();
         // セーブデータの作成
-        SaveData saveData = save.GetData;
+        SaveData saveData = SaveManager.Instance.GetData;
         // スコアの書き込み
         saveData.SetScore(stageNumber, score);
         // コレクトアイテムの書き込み
@@ -70,7 +68,7 @@ public class ResultUIManager : MonoBehaviour
             saveData.SetAchievement(stageNumber, i, collect[i]);
         }
         // セーブファイルに書き込み
-        save.Save();
+        SaveManager.Instance.Save();
 
         // 入力処理
         while (true)
