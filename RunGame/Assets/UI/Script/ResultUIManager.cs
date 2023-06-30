@@ -14,9 +14,14 @@ public class ResultUIManager : MonoBehaviour
 
     public void ResultProcess()
     {
-
+        StartCoroutine(Result());
     }
 
+    private IEnumerator Result()
+    {
 
 
+
+        yield return null;
+    }
 }
