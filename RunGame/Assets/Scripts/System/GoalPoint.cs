@@ -9,32 +9,13 @@ public class GoalPoint : MonoBehaviour
     [Header("ステージ番号")] [SerializeField] private int stageNum;
     [Header("結果表示時間")] [SerializeField] private float clearWait = 3.0f;
     [Header("セレクトシーン")] [SerializeField] private SceneObject selectScene;
-    /// <summary> クリアコルーチン </summary>
-    /// <returns></returns>
-    private IEnumerator ClearFade()
-    {
-        yield return new WaitForSeconds(clearWait); // 一定時間待機
-        SaveData data = SaveManager.Instance.GetData; // セーブデータ
-        data.SetStageClear(stageNum, true); // クリアに変更
-        SaveManager.Instance.Save(data); // セーブ
-        FadeSceneManager.Instance.LoadScene(selectScene); // セレクトシーンに移動
-    }
-    /// <summary> クリアコルーチン </summary>
-    /// <param name="stageNum">ステージ番号</param> <param name="score">スコア</param>
-    /// <returns></returns>
-    private IEnumerator ClearFade(int stageNum, int score)
-    {
-        yield return new WaitForSeconds(clearWait); // 一定時間待機
-        SaveData data = SaveManager.Instance.GetData; // セーブデータ
-        data.SetStageClear(stageNum, true); // クリアに変更
-        SaveManager.Instance.Save(data); // セーブ
-        FadeSceneManager.Instance.LoadScene(selectScene); // セレクトシーンに移動
-    }
     /// <summary> ゴール </summary>
     public void GameClear()
     {
         if (isClear) return; // 一回だけ実行
-        StartCoroutine(ClearFade()); // クリア
+        SaveData data = SaveManager.Instance.GetData; // セーブデータ
+        data.SetStageClear(stageNum, true); // クリアに変更
+        SaveManager.Instance.Save(data); // セーブ
         isClear = true;
     }
     /// <summary> ゴール </summary>
@@ -42,7 +23,9 @@ public class GoalPoint : MonoBehaviour
     public void GameClear(int stageNum, int score)
     {
         if (isClear) return; // 一回だけ実行
-        StartCoroutine(ClearFade(stageNum, score)); // クリア
+        SaveData data = SaveManager.Instance.GetData; // セーブデータ
+        data.SetStageClear(stageNum, true); // クリアに変更
+        SaveManager.Instance.Save(data); // セーブ
         isClear = true;
     }
     /// <summary> 最高スコア保存 </summary>
