@@ -279,8 +279,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -90.97, y: -21.130005}
-  m_SizeDelta: {x: 171.35, y: 41.34}
+  m_AnchoredPosition: {x: -110, y: -30}
+  m_SizeDelta: {x: 212.3669, y: 49.645}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2332237299177243375
 CanvasRenderer:
@@ -311,7 +311,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 43959a9ea02096e4b93ab7f78607ab6d, type: 3}
     m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
@@ -857,6 +857,7 @@ GameObject:
   - component: {fileID: 3698025027244382649}
   - component: {fileID: 5664751221352232835}
   - component: {fileID: 5807333056490301268}
+  - component: {fileID: 1051783795303981555}
   m_Layer: 5
   m_Name: ClearWindow
   m_TagString: Untagged
@@ -948,6 +949,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1051783795303981555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5256467352179050608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecc8cbcb10b4cd04daba6a1e756e7670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  save: {fileID: 0}
+  collectibles: {fileID: 0}
+  scoreMane: {fileID: 0}
+  fade: {fileID: 0}
 --- !u!1 &5644166057354263948
 GameObject:
   m_ObjectHideFlags: 0
