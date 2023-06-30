@@ -28,6 +28,14 @@ public class GoalPoint : MonoBehaviour
         SaveManager.Instance.Save(data); // セーブ
         isClear = true;
     }
+    /// <summary> 実績保存 </summary>
+    /// <param name="element">要素番号</param>
+    public void SaveAchievement(int element)
+    {
+        SaveData data = SaveManager.Instance.GetData; // セーブデータ
+        data.SetAchievement(stageNum, element, true); // 実績変更
+        SaveManager.Instance.Save(data); // セーブ
+    }
     /// <summary> 最高スコア保存 </summary>
     /// <param name="score">スコア</param>
     public void SaveScore(int score)
