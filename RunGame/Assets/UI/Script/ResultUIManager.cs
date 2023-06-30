@@ -85,7 +85,7 @@ public class ResultUIManager : MonoBehaviour
             saveData.SetAchievement(stageNumber, i, collect[i]);
         }
         // セーブファイルに書き込み
-        SaveManager.Instance.Save();
+        SaveManager.Instance.Save(saveData);
 
         // 入力処理
         while (true)
