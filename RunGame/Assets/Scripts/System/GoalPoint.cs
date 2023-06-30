@@ -5,8 +5,6 @@ using UnityEngine;
 /// <summary> ゴールポイント </summary>
 public class GoalPoint : MonoBehaviour
 {
-    // オブジェクトタグ
-    readonly string playerTag = "Player";
     private bool isClear = false; // クリアフラグ
     [Header("ステージ番号")] [SerializeField] private int stageNum;
     [Header("結果表示時間")] [SerializeField] private float clearWait = 3.0f;
@@ -22,9 +20,9 @@ public class GoalPoint : MonoBehaviour
         FadeSceneManager.Instance.LoadScene(selectScene); // セレクトシーンに移動
     }
     /// <summary> クリアコルーチン </summary>
-    /// <param name="stageNum">ステージ番号</param>
+    /// <param name="stageNum">ステージ番号</param> <param name="score">スコア</param>
     /// <returns></returns>
-    private IEnumerator ClearFade(int stageNum)
+    private IEnumerator ClearFade(int stageNum, int score)
     {
         yield return new WaitForSeconds(clearWait); // 一定時間待機
         SaveData data = SaveManager.Instance.GetData; // セーブデータ
@@ -40,11 +38,11 @@ public class GoalPoint : MonoBehaviour
         isClear = true;
     }
     /// <summary> ゴール </summary>
-    /// <param name="stageNum">ステージ番号</param>
-    public void GameClear(int stageNum)
+    /// <param name="stageNum">ステージ番号</param> <param name="score">スコア</param>
+    public void GameClear(int stageNum, int score)
     {
         if (isClear) return; // 一回だけ実行
-        StartCoroutine(ClearFade(stageNum)); // クリア
+        StartCoroutine(ClearFade(stageNum, score)); // クリア
         isClear = true;
     }
     /// <summary> 最高スコア保存 </summary>
@@ -53,14 +51,10 @@ public class GoalPoint : MonoBehaviour
     {
         SaveData data = SaveManager.Instance.GetData; // セーブデータ
         // ハイスコアを更新したら
-        if (data.Score < score)
+        if (data.GetStageScore(stageNum) < score)
         {
-            data.Score = score;
+            data.SetScore(stageNum, score);
             SaveManager.Instance.Save(data); // セーブ
         }
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == playerTag) GameClear(); // プレイヤーに当たったらクリア
     }
 }
