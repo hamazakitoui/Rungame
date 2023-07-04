@@ -41,10 +41,13 @@ public class ResultUIManager : MonoBehaviour
 
     public void ResultProcess()
     {
+        Debug.Log("Result");
+
         StartCoroutine(Result());
+
     }
 
-    private IEnumerator Result()
+    IEnumerator Result()
     {
         // スコアなどを取得
         int score = scoreMane.GetComponent<ScoreManager>().GetScore;
@@ -57,18 +60,18 @@ public class ResultUIManager : MonoBehaviour
         // UIを表示
         GetComponent<Animator>().SetBool("isClear", true);
 
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(3.0f); // 3秒待機
 
 
         // 入手したコレクトアイテムの表示
-        for(int i = 0; i < collect.Length; i++)
+        for (int i = 0; i < collect.Length; i++)
         {
             // コレクトアイテムを取得しているなら処理を行う
             if (collect[i])
             {
 
             }
-            yield return null;
+            yield return null; // 一瞬待機
         }
 
         // スコアの表示
@@ -90,7 +93,7 @@ public class ResultUIManager : MonoBehaviour
         // 入力処理
         while (true)
         {
-            yield return null;
+            yield return null; // 一瞬待機
             // 左右キーで選択を変更する
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
@@ -147,6 +150,6 @@ public class ResultUIManager : MonoBehaviour
                 Debug.LogError("当てはまらない数値が検出されました！");
                 break;
         }
-        yield return null;
+        yield return null; // 一瞬待機
     }
 }

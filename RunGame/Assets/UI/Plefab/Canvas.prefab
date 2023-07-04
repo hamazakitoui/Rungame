@@ -961,10 +961,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc8cbcb10b4cd04daba6a1e756e7670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  save: {fileID: 0}
-  collectibles: {fileID: 0}
-  scoreMane: {fileID: 0}
-  fade: {fileID: 0}
+  collectibles: {fileID: 1247576106417202867}
+  scoreMane: {fileID: 1150699351555851202}
+  selectImage: {fileID: 312349111950836455}
+  stageNumber: 0
 --- !u!1 &5644166057354263948
 GameObject:
   m_ObjectHideFlags: 0
