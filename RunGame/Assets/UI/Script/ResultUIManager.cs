@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class ResultUIManager : MonoBehaviour
 {
     [SerializeField] GameObject collectibles;
     [SerializeField] GameObject scoreMane;
+    [SerializeField] CollectStaging collectStaging;    // コレクトアイテム演出
     [SerializeField] RectTransform selectImage;        // 選択アイコン
+    [SerializeField] Text scoreText;                   // スコアテキスト
     [SerializeField] int stageNumber = 0;              // ステージ番号
 
     private static ResultUIManager instance; // インスタンス保存用変数
@@ -69,13 +72,17 @@ public class ResultUIManager : MonoBehaviour
             // コレクトアイテムを取得しているなら処理を行う
             if (collect[i])
             {
-
+                collectStaging.Staging(i);
             }
-            yield return null; // 一瞬待機
+            yield return new WaitForSeconds(0.5f); // 0.5秒待機
         }
 
         // スコアの表示
-
+        for(float i = 0.1f; i <= 1; i += 0.1f)
+        {
+            scoreText.text = Mathf.Lerp(0, score, i).ToString("0 0 0 0 0 0 0 0");
+            yield return new WaitForSeconds(0.1f); // 0.1秒待機
+        }
 
         // セーブを行う
         // セーブデータの作成
