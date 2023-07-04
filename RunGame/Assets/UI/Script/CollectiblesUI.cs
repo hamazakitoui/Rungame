@@ -35,6 +35,6 @@ public class CollectiblesUI : MonoBehaviour
         collectibles[number] = true;
 
         // UI‚É”½‰f
-        collectiblesImage[number].sprite = collectiblesSprite;
+        GetComponent<CollectStaging>().Staging(number);
     }
 }

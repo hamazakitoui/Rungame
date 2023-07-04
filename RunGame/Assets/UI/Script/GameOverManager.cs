@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameOverManager : MonoBehaviour
 {
-    [SerializeField] RectTransform SelectImage;        // 選択アイコン
+    [SerializeField] GameObject SelectImage;        // 選択アイコン
 
     int number = 0;             // 処理番号
     bool isControl = false;     // 処理を行うかのフラグ
@@ -74,10 +74,10 @@ public class GameOverManager : MonoBehaviour
         switch (number)
         {
             case (int)ProcessNumber.RETRY:
-                SelectImage.localPosition = new Vector3(SelectImage.localPosition.x, RETRY_Y, 0.0f);
+                SelectImage.GetComponent<RectTransform>().localPosition = new Vector3(SelectImage.GetComponent<RectTransform>().localPosition.x, RETRY_Y, 0.0f);
                 break;
             case (int)ProcessNumber.EXIT:
-                SelectImage.localPosition = new Vector3(SelectImage.localPosition.x, EXIT_Y, 0.0f);
+                SelectImage.GetComponent<RectTransform>().localPosition = new Vector3(SelectImage.GetComponent<RectTransform>().localPosition.x, EXIT_Y, 0.0f);
                 break;
             // 当てはまらない数値が検出された場合、エラー文を出す
             default:
