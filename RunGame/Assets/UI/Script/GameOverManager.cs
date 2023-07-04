@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameOverManager : MonoBehaviour
 {
-    [SerializeField] RectTransform SelectImage;        // 選択アイコン
+    [SerializeField] GameObject SelectImage;        // 選択アイコン
 
     int number = 0;             // 処理番号
     bool isControl = false;     // 処理を行うかのフラグ
@@ -28,15 +28,18 @@ public class GameOverManager : MonoBehaviour
         // 決定ボタンが押された場合、それに応じた処理を行う
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            // フェードマネージャーを探す
+            FadeSceneManager fade = GameObject.Find("FadeManager").GetComponent<FadeSceneManager>();
+            // 番号ごとに処理を行う
             switch (number)
             {
                 // 現在のシーンを読み込みなおす
                 case (int)ProcessNumber.RETRY:
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                    fade.LoadScene(SceneManager.GetActiveScene().name);
                     break;
                 // セレクトシーンを読み込む
                 case (int)ProcessNumber.EXIT:
-                    SceneManager.LoadScene("SelectScene");
+                    fade.LoadScene("SelectScene");
                     break;
                 // 当てはまらない数値が検出された場合、エラー文を出してセレクトシーンに戻す
                 default:
@@ -71,10 +74,10 @@ public class GameOverManager : MonoBehaviour
         switch (number)
         {
             case (int)ProcessNumber.RETRY:
-                SelectImage.localPosition = new Vector3(SelectImage.localPosition.x, RETRY_Y, 0.0f);
+                SelectImage.GetComponent<RectTransform>().localPosition = new Vector3(SelectImage.GetComponent<RectTransform>().localPosition.x, RETRY_Y, 0.0f);
                 break;
             case (int)ProcessNumber.EXIT:
-                SelectImage.localPosition = new Vector3(SelectImage.localPosition.x, EXIT_Y, 0.0f);
+                SelectImage.GetComponent<RectTransform>().localPosition = new Vector3(SelectImage.GetComponent<RectTransform>().localPosition.x, EXIT_Y, 0.0f);
                 break;
             // 当てはまらない数値が検出された場合、エラー文を出す
             default:

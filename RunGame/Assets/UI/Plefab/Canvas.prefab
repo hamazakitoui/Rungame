@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 2438000775514688434}
   - component: {fileID: 6473323054259710232}
   - component: {fileID: 4612002344820305819}
+  - component: {fileID: 3509479653708339567}
   m_Layer: 5
   m_Name: CollectText
   m_TagString: Untagged
@@ -163,6 +164,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u5B9D\u77F3\u5165\u624B"
+--- !u!114 &3509479653708339567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509627234885132790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dcb6738d3431634baa0161befe9fad3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1056398094780625433
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,8 +292,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -90.97, y: -21.130005}
-  m_SizeDelta: {x: 171.35, y: 41.34}
+  m_AnchoredPosition: {x: -110, y: -30}
+  m_SizeDelta: {x: 212.3669, y: 49.645}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2332237299177243375
 CanvasRenderer:
@@ -311,7 +324,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 43959a9ea02096e4b93ab7f78607ab6d, type: 3}
     m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
@@ -348,6 +361,7 @@ GameObject:
   - component: {fileID: 8291078594212535907}
   - component: {fileID: 2302403054881853432}
   - component: {fileID: 2927302890765539972}
+  - component: {fileID: 2655442322006576386}
   m_Layer: 5
   m_Name: CollectiblesUI
   m_TagString: Untagged
@@ -424,6 +438,18 @@ MonoBehaviour:
   collectiblesImageUI: {fileID: 3273949877252522652, guid: 0dcf9d424fe1e204c947750c84229e58, type: 3}
   collectiblesSprite: {fileID: 21300000, guid: a0dbba89ee82a8d44950e0b82e406452, type: 3}
   collectiblesValue: 3
+--- !u!114 &2655442322006576386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247576106417202867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dcb6738d3431634baa0161befe9fad3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1969756166575984614
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,7 +594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7971471259fba544c9ab101b2155d4dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SelectImage: {fileID: 5673033225987479833}
+  SelectImage: {fileID: 4252630895574398055}
 --- !u!95 &344500380928011561
 Animator:
   serializedVersion: 4
@@ -600,6 +626,7 @@ GameObject:
   - component: {fileID: 447914665491199479}
   - component: {fileID: 54306711944525370}
   - component: {fileID: 1032625288233400010}
+  - component: {fileID: 5155298391888296856}
   m_Layer: 5
   m_Name: CollectImage_2
   m_TagString: Untagged
@@ -665,6 +692,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &5155298391888296856
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2936027281833612348}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ead84108ea5636e47898bc33c8e36f6f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4252630895574398055
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,6 +904,7 @@ GameObject:
   - component: {fileID: 3698025027244382649}
   - component: {fileID: 5664751221352232835}
   - component: {fileID: 5807333056490301268}
+  - component: {fileID: 1051783795303981555}
   m_Layer: 5
   m_Name: ClearWindow
   m_TagString: Untagged
@@ -948,6 +996,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1051783795303981555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5256467352179050608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecc8cbcb10b4cd04daba6a1e756e7670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectibles: {fileID: 1247576106417202867}
+  scoreMane: {fileID: 1150699351555851202}
+  collectStaging: {fileID: 3509479653708339567}
+  selectImage: {fileID: 312349111950836455}
+  scoreText: {fileID: 3216706969718819144}
+  stageNumber: 0
 --- !u!1 &5644166057354263948
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,6 +1181,7 @@ GameObject:
   - component: {fileID: 7870695873018578097}
   - component: {fileID: 1545370037403458722}
   - component: {fileID: 4779248199123683933}
+  - component: {fileID: 1983663863395365374}
   m_Layer: 5
   m_Name: CollectImage_1
   m_TagString: Untagged
@@ -1180,6 +1247,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &1983663863395365374
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6132724811622429426}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ead84108ea5636e47898bc33c8e36f6f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6887490154596600057
 GameObject:
   m_ObjectHideFlags: 0
@@ -1267,6 +1354,7 @@ GameObject:
   - component: {fileID: 6449841821693173740}
   - component: {fileID: 3729097918937866206}
   - component: {fileID: 8952958380752992738}
+  - component: {fileID: 8062410140697364244}
   m_Layer: 5
   m_Name: CollectImage_3
   m_TagString: Untagged
@@ -1332,6 +1420,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &8062410140697364244
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7409339088467146428}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ead84108ea5636e47898bc33c8e36f6f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7838278956666494425
 GameObject:
   m_ObjectHideFlags: 0
