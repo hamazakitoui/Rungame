@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
     float jumpTime = 0.0f;          // ジャンプしている時間
 
     const int MAXJUMPCOUNT = 2;     // 最大ジャンプ回数
+    const int MAXSLIDECOUNT = 30;    // 最大ゴール時の滑る回数
     const float GRAVITYACCELERATOR = 0.98f;     // 重力加速度
     const float HEAD = 2.0f;        // 足元から頭までの座標距離
 
@@ -338,13 +339,30 @@ public class PlayerController : MonoBehaviour
         // ゴールに接触したかの判定
         if(collision.gameObject.GetComponent<GoalPoint>() != null && !isDead)
         {
-            // 接触しているならばクリアフラグを立てる
+            // ステージクリアフラグを立てる
+            isStageClear = true;
+            // ゴール判定を送る
             collision.gameObject.GetComponent<GoalPoint>().GameClear();
-            anime.SetBool("isClear", true);
-            isMove = false;
-
-            // エフェクトを非表示
-            dustCloudEffect.Stop(false);
+            // ゴール時のアニメーション処理
+            StartCoroutine(GoalAnime());
         }
+    }
+
+    IEnumerator GoalAnime()
+    {
+        // ゴールアニメーション
+        anime.SetBool("isClear", true);
+        isMove = false;
+
+        // 少し前進
+        for(int i = 0; i < MAXSLIDECOUNT; i++)
+        {
+            // 十分の五の速度で進む
+            transform.position += new Vector3(runSpeed * 0.1f, 0f, 0f);
+            yield return null;
+        }
+
+        // エフェクトを非表示
+        dustCloudEffect.Stop(false);
     }
 }

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 /// <summary> セレクトディレクター </summary>
 public class SelectDirector : MonoBehaviour
@@ -9,6 +11,7 @@ public class SelectDirector : MonoBehaviour
     private const float APP_WAIT = 0.2f;
     private bool isSelect = false; // 選択判定
     [SerializeField] AudioObject bgm; // BGM
+    [SerializeField] RectTransform cursorUI; // カーソル
     [SerializeField] GameObject[] scenes; // 選択シーン配列
     [SerializeField] SceneObject[] selectScenes; // 選択可能シーン配列
     // Start is called before the first frame update
@@ -32,6 +35,32 @@ public class SelectDirector : MonoBehaviour
                 // 前のシーンがクリアされていたら表示
                 if (data.GetStageClear(s - 1)) StartCoroutine(SceneActive(scenes[s], s));
                 else scenes[s].SetActive(false); // 非表示
+            }
+        }
+    }
+    void Update()
+    {
+        Selecting(); // 選択中
+    }
+    /// <summary> 選択中 </summary>
+    void Selecting()
+    {
+        // 全ステージ走査
+        for(int s = 0; s < scenes.Length; s++)
+        {
+            // 選択されていなければ無視
+            if (EventSystem.current.currentSelectedGameObject != scenes[s]) continue;
+            // カーソル位置変更
+            cursorUI.anchoredPosition = scenes[s].GetComponent<RectTransform>().anchoredPosition;
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            // 全ステージ走査
+            for (int s = 0; s < scenes.Length; s++)
+            {
+                // 選択されていなければ無視
+                if (EventSystem.current.currentSelectedGameObject != scenes[s]) continue;
+                scenes[s].GetComponent<Button>().onClick.Invoke(); // 登録関数呼び出し
             }
         }
     }
