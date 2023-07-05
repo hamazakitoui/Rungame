@@ -81511,6 +81511,14 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7083641788830937698, guid: 915d591ec08346c4184546ddbbea3d40, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 57.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 7085383246915688141, guid: 915d591ec08346c4184546ddbbea3d40, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 56
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 915d591ec08346c4184546ddbbea3d40, type: 3}
 --- !u!1001 &2060482529
