@@ -53,6 +53,7 @@ public class GoalPoint : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         // ƒvƒŒƒCƒ„[‚É“–‚½‚Á‚½‚ç
-        if (collision.tag == playerTag) ResultUIManager.Instance.ResultProcess(); // Œ‹‰Ê‚ğ•Û‘¶
+        if (collision.tag == playerTag)
+            FindObjectOfType<ResultUIManager>().ResultProcess(); // Œ‹‰Ê‚ğ•Û‘¶
     }
 }
