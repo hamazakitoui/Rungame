@@ -9,7 +9,7 @@ public class CameraController : MonoBehaviour
     [Header("目的地のY座標")]
     [SerializeField] Vector2[] routeVec;            // 目的地座標
     [Header("カメラの速度")]
-    [SerializeField] float speed = 0.1f;                   // カメラ速度
+    [SerializeField] float[] speed;                 // カメラ速度
 
     [Header("プレイヤーを中心に座標をどれだけずらすか")]
     [SerializeField] Vector3 correctionPos = new Vector3(5.0f, 0.5f, -10.0f);     // 座標補正
@@ -43,18 +43,18 @@ public class CameraController : MonoBehaviour
         if (!isProcess) return;
 
         // プレイヤーが死亡したか、ステージクリアした場合、カメラを止める
-        if (player.isDead || player.isDead) return;
+        if (player.isDead || player.isStageClear) return;
 
         // プレイヤーを追従しつつ目的座標へ進む
         if(transform.position.y < routeVec[routeNumber].y && cameraMove == CameraMove.Up)
         {
             // 上に移動
-            transform.position = new Vector3(playerPos.position.x + correctionPos.x, transform.position.y + speed, correctionPos.z);
+            transform.position = new Vector3(playerPos.position.x + correctionPos.x, transform.position.y + speed[routeNumber], correctionPos.z);
         }
         if(transform.position.y > routeVec[routeNumber].y && cameraMove == CameraMove.Down)
         {
             // 下へ移動
-            transform.position = new Vector3(playerPos.position.x + correctionPos.x, transform.position.y - speed, correctionPos.z);
+            transform.position = new Vector3(playerPos.position.x + correctionPos.x, transform.position.y - speed[routeNumber], correctionPos.z);
         }
         if(transform.position.x >= routeVec[routeNumber].x)
         {
