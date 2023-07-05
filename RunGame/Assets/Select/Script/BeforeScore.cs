@@ -9,7 +9,7 @@ public class BeforeScore : MonoBehaviour
     [SerializeField] Sprite NotAchievement;
     [SerializeField] Sprite GetAchievement;
     [SerializeField] GameObject[] Achevementobject;
-    [SerializeField] text[] textobject;
+    [SerializeField] Text[] textobject;
     int nowCliar;
     const int MaxStage = 5;
     const int MaxAchievement = 3;
@@ -22,6 +22,8 @@ public class BeforeScore : MonoBehaviour
         for (int Stage = 0; MaxStage > Stage; Stage++)
         {
             Achevementobject[Stage].SetActive(true);
+            textobject[Stage].gameObject.SetActive(true);
+            textobject[Stage].text = Data.GetStageScore(Stage).ToString();
             if (Data.GetStageClear(Stage))
             {
                 
