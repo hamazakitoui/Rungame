@@ -101,7 +101,17 @@ MonoBehaviour:
   playerPos: {fileID: 0}
   player: {fileID: 0}
   routeVec: []
-  speed: 0.1
+  speed:
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
   correctionPos: {x: 5, y: 0.5, z: -10}
 --- !u!114 &969597970686756967
 MonoBehaviour:

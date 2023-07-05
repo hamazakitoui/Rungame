@@ -80,7 +80,7 @@ public class ResultUIManager : MonoBehaviour
         // スコアの表示
         for(float i = 0.1f; i <= 1; i += 0.1f)
         {
-            scoreText.text = Mathf.Lerp(0, score, i).ToString("0 0 0 0 0 0 0 0");
+            scoreText.text = Mathf.Lerp(0, score, i).ToString("0 0 0 0 0 0");
             yield return new WaitForSeconds(0.1f); // 0.1秒待機
         }
 
