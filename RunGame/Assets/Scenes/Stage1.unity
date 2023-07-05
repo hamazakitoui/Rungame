@@ -93722,6 +93722,10 @@ PrefabInstance:
       value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 6349244217328058225, guid: 3d2a9f92d75d1f046949d69540bd7b54, type: 3}
+      propertyPath: speed.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6349244217328058225, guid: 3d2a9f92d75d1f046949d69540bd7b54, type: 3}
       propertyPath: routeVec.Array.size
       value: 8
       objectReference: {fileID: 0}
