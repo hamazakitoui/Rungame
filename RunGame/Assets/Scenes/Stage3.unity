@@ -10709,7 +10709,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6020734218271894137, guid: 915d591ec08346c4184546ddbbea3d40, type: 3}
   m_PrefabInstance: {fileID: 1557330814}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1557330815}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d373091a735809b4ab5ba0abe044cbbd, type: 3}
@@ -84666,11 +84666,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 279176067724533692, guid: a6f214a148404e545804aea177b5ef52, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 227.40741
       objectReference: {fileID: 0}
     - target: {fileID: 279176067724533692, guid: a6f214a148404e545804aea177b5ef52, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 39.25926
       objectReference: {fileID: 0}
     - target: {fileID: 1053334520465783851, guid: a6f214a148404e545804aea177b5ef52, type: 3}
       propertyPath: m_SizeDelta.y
@@ -84682,7 +84682,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7297816853745859704, guid: a6f214a148404e545804aea177b5ef52, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9022157609693606590, guid: a6f214a148404e545804aea177b5ef52, type: 3}
       propertyPath: m_Pivot.x
@@ -85496,8 +85496,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7083641788830937698, guid: 915d591ec08346c4184546ddbbea3d40, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 62.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7085383246915688141, guid: 915d591ec08346c4184546ddbbea3d40, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 56
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 915d591ec08346c4184546ddbbea3d40, type: 3}
+--- !u!1 &1557330815 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1150699351555851202, guid: 915d591ec08346c4184546ddbbea3d40, type: 3}
+  m_PrefabInstance: {fileID: 1557330814}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1557330816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557330815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &1557767941
 PrefabInstance:
   m_ObjectHideFlags: 0
