@@ -11959,7 +11959,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 369442590415239940, guid: 0ec77a8ff0651c743b8a571ef086f315, type: 3}
       propertyPath: vec0
-      value: 0.43
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 369442590415239940, guid: 0ec77a8ff0651c743b8a571ef086f315, type: 3}
       propertyPath: bigJump
