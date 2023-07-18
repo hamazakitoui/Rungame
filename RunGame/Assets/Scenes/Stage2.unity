@@ -5151,7 +5151,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6349244217328058225, guid: 3d2a9f92d75d1f046949d69540bd7b54, type: 3}
       propertyPath: routeVec.Array.data[6].y
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6349244217328058225, guid: 3d2a9f92d75d1f046949d69540bd7b54, type: 3}
       propertyPath: routeVec.Array.data[7].x
