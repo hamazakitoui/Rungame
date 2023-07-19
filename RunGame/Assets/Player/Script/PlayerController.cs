@@ -364,5 +364,10 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
 
+        // エフェクトを非表示
+        dustCloudEffect.Stop(false);
+
+        // 加速エフェクトを非表示
+        afterimage.EndGenerator();
     }
 }
