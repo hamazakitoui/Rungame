@@ -5,9 +5,25 @@ using UnityEngine;
 /// <summary> タイトルマネージャー </summary>
 public class TitleManager : MonoBehaviour
 {
-    bool startFlag = false; // 開始フラグ
+    int select = 0;         // 選択参照値
+    public bool processFlag = true; // 処理フラグ
     [SerializeField] SceneObject selectScene; // ロードシーン
     [SerializeField] AudioObject bgm; // BGM
+    [SerializeField] RectTransform SelectIcon;
+    [SerializeField] OptionController option;
+
+    Vector3 selectPos_start = new Vector3(-106f, -28f, 0f);
+    Vector3 selectPos_option = new Vector3(-106f, -90f, 0f);
+    Vector3 selectPos_end = new Vector3(-106f, -146f, 0f);
+
+    // タイトル画面の選択中の項目
+    enum TitleSelect
+    {
+        GameStart,
+        Option,
+        End,
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,17 +34,70 @@ public class TitleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameStart(); // ゲーム開始
-    }
-    /// <summary> ゲーム開始 </summary>
-    void GameStart()
-    {
-        if (startFlag) return;
-        // スペースキーで開始
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (!processFlag) return;
+
+        // スペースキーで処理を行う
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
         {
-            FadeSceneManager.Instance.LoadScene(selectScene);
-            startFlag = true;
+            switch (select)
+            {
+                case (int)TitleSelect.GameStart:
+                    processFlag = false;
+                    FadeSceneManager.Instance.LoadScene(selectScene);
+                    break;
+                case (int)TitleSelect.Option:
+                    processFlag = false;
+                    option.StartOption();
+                    break;
+                case (int)TitleSelect.End:
+                    processFlag = false;
+                    Quit();
+                    break;
+            }
         }
+        // セレクトアイコンを操作する
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            // 選択中の参照を変更
+            select--;
+            if (select < 0) select = (int)TitleSelect.End;
+            // アイコンを移動させる
+            SelectMove();
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            // 選択中の参照を変更
+            select++;
+            if (select > (int)TitleSelect.End) select = 0;
+            // アイコンを移動させる
+            SelectMove();
+        }
+    }
+    /// <summary>
+    ///  セレクトアイコンの座標移動
+    /// </summary>
+    void SelectMove()
+    {
+        switch (select)
+        {
+            case (int)TitleSelect.GameStart:
+                SelectIcon.localPosition = selectPos_start;
+                break;
+            case (int)TitleSelect.Option:
+                SelectIcon.localPosition = selectPos_option;
+                break;
+            case (int)TitleSelect.End:
+                SelectIcon.localPosition = selectPos_end;
+                break;
+        }
+    }
+    /// <summary> アプリの終了 </summary>
+    void Quit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_STANDALONE
+            UnityEngine.Application.Quit();
+#endif
     }
 }
