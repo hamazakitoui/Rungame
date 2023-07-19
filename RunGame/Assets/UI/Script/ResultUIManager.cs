@@ -21,6 +21,7 @@ public class ResultUIManager : MonoBehaviour
     float nextPos_x = 78f;
 
     const int MAXNUMBER = 1;    // 最大処理番号
+    const int LIMITSCORE = 999999;   // 最大表示値
     enum ProcessNumber
     {
         RETRY,
@@ -80,7 +81,17 @@ public class ResultUIManager : MonoBehaviour
         // スコアの表示
         for(float i = 0.1f; i <= 1; i += 0.1f)
         {
-            scoreText.text = Mathf.Lerp(0, score, i).ToString("0 0 0 0 0 0");
+            float value = Mathf.Lerp(0, score, i);
+
+            // 限界値を超えているか
+            if(value >= LIMITSCORE)
+            {
+                scoreText.text = LIMITSCORE.ToString("0 0 0 0 0 0") + " ＋";
+            }
+            else
+            {
+                scoreText.text = value.ToString("0 0 0 0 0 0");
+            }
             yield return new WaitForSeconds(0.1f); // 0.1秒待機
         }
 
