@@ -6,10 +6,11 @@ using UnityEngine;
 public class TitleManager : MonoBehaviour
 {
     int select = 0;         // 選択参照値
-    bool processFlag = true; // 処理フラグ
+    public bool processFlag = true; // 処理フラグ
     [SerializeField] SceneObject selectScene; // ロードシーン
     [SerializeField] AudioObject bgm; // BGM
     [SerializeField] RectTransform SelectIcon;
+    [SerializeField] OptionController option;
 
     Vector3 selectPos_start = new Vector3(-106f, -28f, 0f);
     Vector3 selectPos_option = new Vector3(-106f, -90f, 0f);
@@ -36,7 +37,7 @@ public class TitleManager : MonoBehaviour
         if (!processFlag) return;
 
         // スペースキーで処理を行う
-        if (Input.GetKeyDown(KeyCode.Space) && Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
         {
             switch (select)
             {
@@ -46,7 +47,7 @@ public class TitleManager : MonoBehaviour
                     break;
                 case (int)TitleSelect.Option:
                     processFlag = false;
-
+                    option.StartOption();
                     break;
                 case (int)TitleSelect.End:
                     processFlag = false;
