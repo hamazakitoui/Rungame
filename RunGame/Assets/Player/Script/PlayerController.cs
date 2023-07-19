@@ -182,6 +182,8 @@ public class PlayerController : MonoBehaviour
         anime.SetBool("isDead", true);
         // エフェクトを非表示
         dustCloudEffect.Stop(false);
+        // 加速エフェクトを非表示
+        afterimage.EndGenerator();
         // コライダーをOFFにする
         this.GetComponent<CapsuleCollider2D>().enabled = false;
 
@@ -362,7 +364,5 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
 
-        // エフェクトを非表示
-        dustCloudEffect.Stop(false);
     }
 }
