@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class OptionController : MonoBehaviour
 {
-    [SerializeField] AudioManager audioManager;
     [SerializeField] RectTransform selectIcon;
     [SerializeField] TitleManager titleManager;
 
+    AudioManager audioManager;
+
     int select = 0;         // 選択参照値
+    int volumeValue = 1;    // 音量値
     bool isProcess = false;
 
+    // 音量アイコンの初期位置
+    float volumePos = -114f;
+    float volumeMove = 34.3f;
     // 項目別の座標
     Vector3 selectPos_bgm = new Vector3(0f, 34f, 0f);
     Vector3 selectPos_se = new Vector3(0f, -38f, 0f);
@@ -71,6 +76,10 @@ public class OptionController : MonoBehaviour
         // セレクトアイコンを初期位置に戻す
         select = 0;
         SelectMove();
+        // 現在の音量に応じて位置を変更する
+        audioManager = AudioManager.Instance;
+        
+
         // オブジェクトを可視化する
         gameObject.SetActive(true);
         isProcess = true;
