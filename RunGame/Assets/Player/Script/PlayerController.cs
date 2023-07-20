@@ -289,7 +289,7 @@ public class PlayerController : MonoBehaviour
                     // 音データがあるかをチェック
                     if (seData.GetCollectiblesSE != null)
                     {
-                        // 死亡効果音を鳴らす
+                        // コレクトアイテム取得効果音を鳴らす
                         audio.clip = seData.GetCollectiblesSE;
                         audio.Play();
                     }
