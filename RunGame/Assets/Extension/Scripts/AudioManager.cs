@@ -26,7 +26,7 @@ public class AudioManager : MonoBehaviour
     // 再生可能BGM、SEリスト
     private Dictionary<string, AudioClip> BgmClipDict = null, SeClipDict = null;
     // BGM再生音量、SE再生音量
-    [SerializeField] private float bgmVolume = 1f, seVolume = 1f;
+    public float bgmVolume = 1f, seVolume = 1f;
     // BGMフェード時間、BGMフェード重複実行割合
     [SerializeField] private float TimeToFade = 1f, CrossFadeRatio = 1f;
     // デバッグ
