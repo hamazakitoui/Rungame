@@ -244,6 +244,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1051783795303981555, guid: 915d591ec08346c4184546ddbbea3d40, type: 3}
+      propertyPath: stageNumber
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3834071329882388290, guid: 915d591ec08346c4184546ddbbea3d40, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 731
@@ -340,6 +344,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 128226674}
+    - target: {fileID: 7083641788830937698, guid: 915d591ec08346c4184546ddbbea3d40, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 58
+      objectReference: {fileID: 0}
+    - target: {fileID: 7085383246915688141, guid: 915d591ec08346c4184546ddbbea3d40, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 56
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 915d591ec08346c4184546ddbbea3d40, type: 3}
 --- !u!1001 &18745456
@@ -48830,7 +48842,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 369442590415239943, guid: 0ec77a8ff0651c743b8a571ef086f315, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.64
+      value: -1.99
       objectReference: {fileID: 0}
     - target: {fileID: 369442590415239943, guid: 0ec77a8ff0651c743b8a571ef086f315, type: 3}
       propertyPath: m_LocalPosition.z
