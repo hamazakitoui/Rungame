@@ -1288,6 +1288,7 @@ MonoBehaviour:
   seIconPos: {fileID: 946048662}
   selectIcon: {fileID: 464113038}
   titleManager: {fileID: 1499890682}
+  uISE: {fileID: 11400000, guid: b258143474cf55749ba175286ba9bf01, type: 2}
 --- !u!1 &1381250068
 GameObject:
   m_ObjectHideFlags: 0
@@ -1516,13 +1517,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627d3faebdf652e48bebf4acd62a84eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  processFlag: 1
   selectScene:
     sceneName: SelectScene
   bgm:
     audioName: "\u30BF\u30A4\u30C8\u30EB\u3068\u30BB\u30EC\u30AF\u30C8BGM"
   SelectIcon: {fileID: 789337481}
   option: {fileID: 1228584077}
+  uISE: {fileID: 11400000, guid: b258143474cf55749ba175286ba9bf01, type: 2}
 --- !u!1 &1516014844
 GameObject:
   m_ObjectHideFlags: 0
