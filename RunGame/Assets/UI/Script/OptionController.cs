@@ -51,9 +51,14 @@ public class OptionController : MonoBehaviour
                         // 音量を低くする
                         audioManager.bgmVolume -= fluctuation;
                         bgmIconPos.localPosition -= new Vector3(volumeMove, 0f, 0f);
+
+                        // 移動SEを鳴らす
+                        //if (uISE.GetSelectSE != null){}
                     }
                     else
                     {
+                        // 無効SEを鳴らす
+                        //if(uISE.GetInputRejectionSE != null) {}
                     }
                     break;
                 case (int)OptionSelect.SE:
@@ -63,6 +68,14 @@ public class OptionController : MonoBehaviour
                         // 音量を低くする
                         audioManager.seVolume -= fluctuation;
                         seIconPos.localPosition -= new Vector3(volumeMove, 0f, 0f);
+
+                        // 移動SEを鳴らす
+                        //if (uISE.GetSelectSE != null){}
+                    }
+                    else
+                    {
+                        // 無効SEを鳴らす
+                        //if(uISE.GetInputRejectionSE != null) {}
                     }
                     break;
             }
@@ -78,6 +91,14 @@ public class OptionController : MonoBehaviour
                         // 音量を高くする
                         audioManager.bgmVolume += fluctuation;
                         bgmIconPos.localPosition += new Vector3(volumeMove, 0f, 0f);
+
+                        // 移動SEを鳴らす
+                        //if (uISE.GetSelectSE != null){}
+                    }
+                    else
+                    {
+                        // 無効SEを鳴らす
+                        //if(uISE.GetInputRejectionSE != null) {}
                     }
                     break;
                 case (int)OptionSelect.SE:
@@ -87,6 +108,14 @@ public class OptionController : MonoBehaviour
                         // 音量を高くする
                         audioManager.seVolume += fluctuation;
                         seIconPos.localPosition += new Vector3(volumeMove, 0f, 0f);
+
+                        // 移動SEを鳴らす
+                        //if (uISE.GetSelectSE != null){}
+                    }
+                    else
+                    {
+                        // 無効SEを鳴らす
+                        //if(uISE.GetInputRejectionSE != null) {}
                     }
                     break;
             }
@@ -97,6 +126,8 @@ public class OptionController : MonoBehaviour
             // 選択中の参照を変更
             select--;
             if (select < 0) select = (int)OptionSelect.End;
+            // 移動SEを鳴らす
+            //if (uISE.GetSelectSE != null){}
             // アイコンを移動させる
             SelectMove();
         }
@@ -105,16 +136,20 @@ public class OptionController : MonoBehaviour
             // 選択中の参照を変更
             select++;
             if (select > (int)OptionSelect.End) select = 0;
+            // 移動SEを鳴らす
+            //if (uISE.GetSelectSE != null){}
             // アイコンを移動させる
             SelectMove();
         }
 
-        if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
         {
             if (select != (int)OptionSelect.End) return;
             isProcess = false;
             // オプションを閉じる
             gameObject.SetActive(false);
+            // 移動SEを鳴らす
+            //if (uISE.GetCancelSE != null) { }
             // タイトルの処理を再開
             titleManager.processFlag = true;
         }
