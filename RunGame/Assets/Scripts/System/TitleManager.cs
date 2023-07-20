@@ -6,11 +6,12 @@ using UnityEngine;
 public class TitleManager : MonoBehaviour
 {
     int select = 0;         // 選択参照値
-    public bool processFlag = true; // 処理フラグ
+    public bool processFlag { get; set; }     // 処理フラグ
     [SerializeField] SceneObject selectScene; // ロードシーン
     [SerializeField] AudioObject bgm; // BGM
     [SerializeField] RectTransform SelectIcon;
     [SerializeField] OptionController option;
+    [SerializeField] UISEData uISE;
 
     Vector3 selectPos_start = new Vector3(-106f, -28f, 0f);
     Vector3 selectPos_option = new Vector3(-106f, -90f, 0f);
@@ -24,14 +25,13 @@ public class TitleManager : MonoBehaviour
         End,
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         if (bgm != null && bgm != "") AudioManager.Instance.PlayBGM(bgm); // BGM再生
         SaveManager.Instance.Load(); // 読み込み
-    }
 
-    // Update is called once per frame
+        processFlag = true; // 操作可能にする
+    }
     void Update()
     {
         if (!processFlag) return;
@@ -39,6 +39,8 @@ public class TitleManager : MonoBehaviour
         // スペースキーで処理を行う
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
         {
+            // 移動SEを鳴らす
+            //if (uISE.GetDecisionSE != null) { }
             switch (select)
             {
                 case (int)TitleSelect.GameStart:
@@ -61,6 +63,8 @@ public class TitleManager : MonoBehaviour
             // 選択中の参照を変更
             select--;
             if (select < 0) select = (int)TitleSelect.End;
+            // 移動SEを鳴らす
+            //if (uISE.GetSelectSE != null){}
             // アイコンを移動させる
             SelectMove();
         }
@@ -69,6 +73,8 @@ public class TitleManager : MonoBehaviour
             // 選択中の参照を変更
             select++;
             if (select > (int)TitleSelect.End) select = 0;
+            // 移動SEを鳴らす
+            //if (uISE.GetSelectSE != null){}
             // アイコンを移動させる
             SelectMove();
         }
